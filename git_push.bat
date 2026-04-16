@@ -1,44 +1,42 @@
 @echo off
 echo =======================================================
-echo   Pushing code to GitHub: Labor-Connect-Platform
+echo   Pushing code to: Worker-Connect-Platform
 echo =======================================================
 
 :: Check if git is installed
 git --version >_null 2>&1
 if %errorlevel% neq 0 (
-    echo [ERROR] Git is not installed. Please install it from https://git-scm.com/
+    echo [ERROR] Git is not installed.
     pause
     exit /b
 )
 
-:: Initialize git if needed
+:: Initialize git and set branch
 if not exist .git (
     echo Initializing git repository...
     git init
 )
+git branch -M main
 
-:: Configure remote if not already set
-git remote add origin https://github.com/Abhishek-Maheshwari-778/Labor-Connect-Platform.git 2>_null
-git remote set-url origin https://github.com/Abhishek-Maheshwari-778/Labor-Connect-Platform.git
+:: Add remote
+echo Setting remote URL...
+git remote remove origin >_null 2>&1
+git remote add origin https://github.com/Abhishek-Maheshwari-778/Worker-Connect-Platform.git
 
-:: Add and commit changes
-echo Staging files...
+:: Add and commit
+echo Staging and Committing...
 git add .
-echo Committing changes...
-git commit -m "Update: Added automation scripts and enhanced dummy data / seed script"
+git commit -m "Initial commit for Worker Connect Platform"
 
-:: Force Push to GitHub (Overwriting old data as requested)
+:: Push
 echo.
 echo =======================================================
-echo   FORCE PUSHING TO GITHUB (OVERWRITING)...
+echo   PUSHING TO GITHUB (MAIN)...
 echo =======================================================
-git push origin main --force 2>_null
-if %errorlevel% neq 0 (
-    git push origin master --force
-)
+git push -u origin main
 
 echo.
 echo =======================================================
-echo   Done! Your repository has been overwritten.
+echo   Done! Your code is now live on GitHub.
 echo =======================================================
 pause
