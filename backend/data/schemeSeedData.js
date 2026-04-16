@@ -1,0 +1,800 @@
+/**
+ * Labour Connect — Government Scheme Seed Data
+ * 15 real Indian welfare schemes for daily wage labourers
+ *
+ * YouTube video IDs: Replace these with real tutorial video IDs from YouTube.
+ * Search: "<scheme name> kaise apply kare" or "<scheme name> how to apply"
+ * on YouTube and use the 11-character ID from the URL.
+ */
+
+const schemes = [
+  // ─── 1. PM-SYM ───────────────────────────────────────────────────────────
+  {
+    name_en: 'Pradhan Mantri Shram Yogi Maandhan (PM-SYM)',
+    name_hi: 'प्रधानमंत्री श्रम योगी मानधन (PM-SYM)',
+    description_en:
+      'A voluntary and contributory pension scheme for unorganised sector workers. Ensures a minimum monthly pension of ₹3,000 after age 60.',
+    description_hi:
+      'असंगठित क्षेत्र के श्रमिकों के लिए स्वैच्छिक अंशदायी पेंशन योजना। 60 वर्ष की आयु के बाद न्यूनतम ₹3,000 मासिक पेंशन सुनिश्चित करती है।',
+    ministry_en: 'Ministry of Labour & Employment',
+    ministry_hi: 'श्रम एवं रोजगार मंत्रालय',
+    category: 'pension',
+    state: 'All India',
+    workType: 'any',
+    industrySector: 'any',
+    skillLevel: 'any',
+    demographic: 'all',
+    socioEconomic: 'low_income',
+    employmentStatus: 'daily_wage',
+    eligibilityCriteria: [
+      { en: 'Age between 18 to 40 years', hi: '18 से 40 वर्ष के बीच आयु' },
+      { en: 'Monthly income up to ₹15,000', hi: 'मासिक आय ₹15,000 तक' },
+      { en: 'Must not be a member of EPFO, ESIC, or NPS', hi: 'EPFO, ESIC या NPS का सदस्य नहीं होना चाहिए' },
+      { en: 'Must have a savings bank account and Aadhaar number', hi: 'बचत बैंक खाता और आधार नंबर होना चाहिए' },
+      { en: 'Unorganised sector worker (street vendor, driver, labourer, etc.)', hi: 'असंगठित क्षेत्र का श्रमिक (रेहड़ी वाला, चालक, मजदूर आदि)' },
+    ],
+    benefits: [
+      { en: 'Minimum pension of ₹3,000 per month after age 60', hi: '60 वर्ष के बाद न्यूनतम ₹3,000 प्रति माह पेंशन' },
+      { en: 'Equal contribution matched by Central Government', hi: 'केंद्र सरकार समान अंशदान करती है' },
+      { en: 'Family pension of 50% to spouse on death', hi: 'मृत्यु पर पति/पत्नी को 50% पारिवारिक पेंशन' },
+      { en: 'Free exit after 10 years with interest', hi: '10 वर्ष बाद ब्याज सहित मुफ्त निकासी' },
+    ],
+    documentsRequired: [
+      { en: 'Aadhaar Card', hi: 'आधार कार्ड' },
+      { en: 'Savings Bank Account / Jan Dhan Account', hi: 'बचत बैंक खाता / जन धन खाता' },
+      { en: 'Mobile Number linked to Aadhaar', hi: 'आधार से जुड़ा मोबाइल नंबर' },
+    ],
+    applicationSteps: [
+      { step: 1, en: 'Visit nearest CSC (Common Service Centre) or register online at maandhan.in', hi: 'नजदीकी CSC (कॉमन सर्विस सेंटर) पर जाएं या maandhan.in पर ऑनलाइन पंजीकरण करें' },
+      { step: 2, en: 'Provide Aadhaar number and savings bank account details', hi: 'आधार नंबर और बचत बैंक खाता विवरण दें' },
+      { step: 3, en: 'Choose monthly contribution amount (₹55–₹200 based on age)', hi: 'मासिक अंशदान राशि चुनें (आयु के अनुसार ₹55–₹200)' },
+      { step: 4, en: 'Set up auto-debit from bank account', hi: 'बैंक खाते से ऑटो-डेबिट सेट करें' },
+      { step: 5, en: 'Collect your Shram Yogi Card', hi: 'अपना श्रम योगी कार्ड प्राप्त करें' },
+    ],
+    officialLink: 'https://maandhan.in',
+    portalName: 'Maandhan Portal',
+    youtubeVideoId: 'dSMHxHmgvdE',
+    youtubeTitle_en: 'PM-SYM: How to Apply Online Step by Step',
+    youtubeTitle_hi: 'PM-SYM: ऑनलाइन आवेदन कैसे करें',
+    tags: ['pension', 'daily wage', 'unorganised sector', 'retirement', 'PM-SYM'],
+    isActive: true,
+    isFeatured: true,
+  },
+
+  // ─── 2. PMKVY ────────────────────────────────────────────────────────────
+  {
+    name_en: 'Pradhan Mantri Kaushal Vikas Yojana (PMKVY)',
+    name_hi: 'प्रधानमंत्री कौशल विकास योजना (PMKVY)',
+    description_en:
+      'Free skill training scheme to make Indian youth industry-relevant. Provides certification and monetary reward for completing government-approved skill courses.',
+    description_hi:
+      'भारतीय युवाओं को उद्योग-प्रासंगिक बनाने के लिए निःशुल्क कौशल प्रशिक्षण योजना। सरकार द्वारा अनुमोदित कौशल पाठ्यक्रम पूरा करने पर प्रमाण पत्र और नकद पुरस्कार प्रदान करती है।',
+    ministry_en: 'Ministry of Skill Development & Entrepreneurship',
+    ministry_hi: 'कौशल विकास एवं उद्यमशीलता मंत्रालय',
+    category: 'skill_development',
+    state: 'All India',
+    workType: 'any',
+    industrySector: 'any',
+    skillLevel: 'unskilled',
+    demographic: 'youth',
+    socioEconomic: 'any',
+    employmentStatus: 'unemployed',
+    eligibilityCriteria: [
+      { en: 'Indian citizen aged 15-45 years', hi: '15-45 वर्ष के भारतीय नागरिक' },
+      { en: 'School dropout or passed 10th/12th standard', hi: 'स्कूल छोड़ने वाले या 10वीं/12वीं उत्तीर्ण' },
+      { en: 'Seeking employment or self-employment', hi: 'रोजगार या स्व-रोजगार की तलाश में' },
+    ],
+    benefits: [
+      { en: 'Free training in 300+ job roles', hi: '300+ जॉब भूमिकाओं में निःशुल्क प्रशिक्षण' },
+      { en: 'Government-recognised certification (NSQF level)', hi: 'सरकार द्वारा मान्यता प्राप्त प्रमाण पत्र (NSQF स्तर)' },
+      { en: 'Monetary reward of ₹8,000–₹10,000 on completion', hi: 'पूरा होने पर ₹8,000–₹10,000 नकद पुरस्कार' },
+      { en: 'Placement assistance after training', hi: 'प्रशिक्षण के बाद नियुक्ति सहायता' },
+      { en: 'Accidental insurance during training', hi: 'प्रशिक्षण के दौरान दुर्घटना बीमा' },
+    ],
+    documentsRequired: [
+      { en: 'Aadhaar Card', hi: 'आधार कार्ड' },
+      { en: 'Bank Account Passbook', hi: 'बैंक खाता पासबुक' },
+      { en: 'Educational Certificates (if available)', hi: 'शैक्षिक प्रमाण पत्र (यदि उपलब्ध हो)' },
+      { en: 'Passport size photographs', hi: 'पासपोर्ट आकार की तस्वीरें' },
+    ],
+    applicationSteps: [
+      { step: 1, en: 'Visit skillindiadigital.gov.in or nearest PMKVY training centre', hi: 'skillindiadigital.gov.in पर जाएं या नजदीकी PMKVY प्रशिक्षण केंद्र पर जाएं' },
+      { step: 2, en: 'Register with Aadhaar and basic details', hi: 'आधार और बुनियादी विवरण के साथ पंजीकरण करें' },
+      { step: 3, en: 'Select your preferred job role and training centre', hi: 'अपनी पसंदीदा जॉब भूमिका और प्रशिक्षण केंद्र चुनें' },
+      { step: 4, en: 'Complete the training (100–640 hours depending on course)', hi: 'प्रशिक्षण पूरा करें (पाठ्यक्रम के अनुसार 100–640 घंटे)' },
+      { step: 5, en: 'Appear for assessment exam and receive certificate + reward', hi: 'मूल्यांकन परीक्षा दें और प्रमाण पत्र + पुरस्कार प्राप्त करें' },
+    ],
+    officialLink: 'https://www.pmkvyofficial.org',
+    portalName: 'PMKVY Official Portal',
+    youtubeVideoId: 'oFYvDmNF3Jk',
+    youtubeTitle_en: 'PMKVY 4.0 — Free Skill Training & Registration Process',
+    youtubeTitle_hi: 'PMKVY 4.0 — निःशुल्क कौशल प्रशिक्षण और पंजीकरण प्रक्रिया',
+    tags: ['skill training', 'free course', 'certificate', 'youth', 'employment', 'PMKVY'],
+    isActive: true,
+    isFeatured: true,
+  },
+
+  // ─── 3. Ayushman Bharat ───────────────────────────────────────────────────
+  {
+    name_en: 'Ayushman Bharat – Pradhan Mantri Jan Arogya Yojana',
+    name_hi: 'आयुष्मान भारत – प्रधानमंत्री जन आरोग्य योजना',
+    description_en:
+      "World's largest government-funded health insurance scheme providing up to ₹5 lakh per family per year for hospitalisation.",
+    description_hi:
+      'अस्पताल में भर्ती होने के लिए प्रति परिवार प्रति वर्ष ₹5 लाख तक का स्वास्थ्य बीमा प्रदान करने वाली विश्व की सबसे बड़ी सरकारी वित्त पोषित स्वास्थ्य बीमा योजना।',
+    ministry_en: 'Ministry of Health & Family Welfare',
+    ministry_hi: 'स्वास्थ्य एवं परिवार कल्याण मंत्रालय',
+    category: 'healthcare',
+    state: 'All India',
+    workType: 'any',
+    industrySector: 'any',
+    skillLevel: 'any',
+    demographic: 'all',
+    socioEconomic: 'bpl',
+    employmentStatus: 'any',
+    eligibilityCriteria: [
+      { en: 'Families listed in SECC 2011 database', hi: 'SECC 2011 डेटाबेस में सूचीबद्ध परिवार' },
+      { en: 'BPL families and economically weaker sections', hi: 'BPL परिवार और आर्थिक रूप से कमजोर वर्ग' },
+      { en: 'Daily wage labourers and unorganised sector workers', hi: 'दैनिक वेतन मजदूर और असंगठित क्षेत्र के श्रमिक' },
+      { en: 'No premium required for eligible families', hi: 'पात्र परिवारों के लिए कोई प्रीमियम नहीं' },
+    ],
+    benefits: [
+      { en: '₹5 lakh health cover per family per year', hi: 'प्रति परिवार प्रति वर्ष ₹5 लाख स्वास्थ्य कवर' },
+      { en: 'Cashless treatment at empanelled hospitals', hi: 'सूचीबद्ध अस्पतालों में कैशलेस उपचार' },
+      { en: 'Covers 1,574 medical procedures and surgeries', hi: '1,574 चिकित्सा प्रक्रियाएं और सर्जरी शामिल' },
+      { en: 'Pre and post hospitalisation expenses covered', hi: 'अस्पताल में भर्ती से पहले और बाद के खर्च शामिल' },
+      { en: 'Portability — treatment anywhere in India', hi: 'पोर्टेबिलिटी — भारत में कहीं भी उपचार' },
+    ],
+    documentsRequired: [
+      { en: 'Aadhaar Card or Ration Card', hi: 'आधार कार्ड या राशन कार्ड' },
+      { en: 'Mobile number registered with Aadhaar', hi: 'आधार से पंजीकृत मोबाइल नंबर' },
+      { en: 'Family ID (if available from state)', hi: 'परिवार आईडी (यदि राज्य से उपलब्ध हो)' },
+    ],
+    applicationSteps: [
+      { step: 1, en: 'Check eligibility at pmjay.gov.in or call 14555', hi: 'pmjay.gov.in पर पात्रता जांचें या 14555 पर कॉल करें' },
+      { step: 2, en: 'Visit nearest Ayushman Mitra centre or empanelled hospital', hi: 'नजदीकी आयुष्मान मित्र केंद्र या सूचीबद्ध अस्पताल पर जाएं' },
+      { step: 3, en: 'Get your Ayushman card generated with Aadhaar verification', hi: 'आधार सत्यापन से अपना आयुष्मान कार्ड बनवाएं' },
+      { step: 4, en: 'Use the card for cashless treatment at any empanelled hospital', hi: 'किसी भी सूचीबद्ध अस्पताल में कैशलेस उपचार के लिए कार्ड उपयोग करें' },
+    ],
+    officialLink: 'https://pmjay.gov.in',
+    portalName: 'PM-JAY Portal',
+    youtubeVideoId: 'Vb_B_LGpyHg',
+    youtubeTitle_en: 'Ayushman Bharat Card — How to Apply & Download',
+    youtubeTitle_hi: 'आयुष्मान भारत कार्ड — आवेदन और डाउनलोड कैसे करें',
+    tags: ['health insurance', 'hospital', 'cashless', 'BPL', 'family', 'ayushman'],
+    isActive: true,
+    isFeatured: true,
+  },
+
+  // ─── 4. PMSBY ────────────────────────────────────────────────────────────
+  {
+    name_en: 'Pradhan Mantri Suraksha Bima Yojana (PMSBY)',
+    name_hi: 'प्रधानमंत्री सुरक्षा बीमा योजना (PMSBY)',
+    description_en:
+      'Accidental death and disability insurance scheme at just ₹20/year premium offering ₹2 lakh cover for accidental death and permanent disability.',
+    description_hi:
+      'मात्र ₹20/वर्ष प्रीमियम पर दुर्घटना मृत्यु एवं विकलांगता बीमा योजना — दुर्घटना मृत्यु और स्थायी विकलांगता के लिए ₹2 लाख का कवर।',
+    ministry_en: 'Ministry of Finance',
+    ministry_hi: 'वित्त मंत्रालय',
+    category: 'insurance',
+    state: 'All India',
+    workType: 'any',
+    industrySector: 'any',
+    skillLevel: 'any',
+    demographic: 'all',
+    socioEconomic: 'low_income',
+    employmentStatus: 'daily_wage',
+    eligibilityCriteria: [
+      { en: 'Age 18 to 70 years', hi: '18 से 70 वर्ष आयु' },
+      { en: 'Must have a savings bank account', hi: 'बचत बैंक खाता होना चाहिए' },
+      { en: 'Aadhaar linked to bank account preferred', hi: 'बैंक खाते से जुड़ा आधार पसंदीदा' },
+    ],
+    benefits: [
+      { en: '₹2 lakh on accidental death', hi: 'दुर्घटना मृत्यु पर ₹2 लाख' },
+      { en: '₹2 lakh for total permanent disability', hi: 'पूर्ण स्थायी विकलांगता के लिए ₹2 लाख' },
+      { en: '₹1 lakh for partial permanent disability', hi: 'आंशिक स्थायी विकलांगता के लिए ₹1 लाख' },
+      { en: 'Annual premium of only ₹20 auto-debited', hi: 'मात्र ₹20 वार्षिक प्रीमियम ऑटो-डेबिट' },
+    ],
+    documentsRequired: [
+      { en: 'Aadhaar Card', hi: 'आधार कार्ड' },
+      { en: 'Bank Account details', hi: 'बैंक खाता विवरण' },
+      { en: 'Nomination form', hi: 'नॉमिनेशन फॉर्म' },
+    ],
+    applicationSteps: [
+      { step: 1, en: 'Visit your bank branch or net banking / mobile banking', hi: 'अपनी बैंक शाखा या नेट बैंकिंग / मोबाइल बैंकिंग पर जाएं' },
+      { step: 2, en: 'Fill PMSBY enrollment form with nominee details', hi: 'नॉमिनी विवरण के साथ PMSBY नामांकन फॉर्म भरें' },
+      { step: 3, en: 'Give consent for auto-debit of ₹20/year', hi: '₹20/वर्ष ऑटो-डेबिट के लिए सहमति दें' },
+      { step: 4, en: 'Receive SMS confirmation — coverage starts immediately', hi: 'SMS पुष्टि प्राप्त करें — कवरेज तुरंत शुरू होती है' },
+    ],
+    officialLink: 'https://jansuraksha.gov.in',
+    portalName: 'Jan Suraksha Portal',
+    youtubeVideoId: 'Nv6iGEsgjkQ',
+    youtubeTitle_en: 'PMSBY — ₹20 Accident Insurance Enrollment Guide',
+    youtubeTitle_hi: 'PMSBY — ₹20 दुर्घटना बीमा नामांकन गाइड',
+    tags: ['accident insurance', '₹20', 'death benefit', 'disability', 'bank account', 'PMSBY'],
+    isActive: true,
+    isFeatured: false,
+  },
+
+  // ─── 5. PMJJBY ───────────────────────────────────────────────────────────
+  {
+    name_en: 'Pradhan Mantri Jeevan Jyoti Bima Yojana (PMJJBY)',
+    name_hi: 'प्रधानमंत्री जीवन ज्योति बीमा योजना (PMJJBY)',
+    description_en:
+      'Life insurance scheme offering ₹2 lakh coverage on death from any cause at a premium of just ₹436/year.',
+    description_hi:
+      'जीवन बीमा योजना जो किसी भी कारण से मृत्यु पर ₹2 लाख का कवरेज मात्र ₹436/वर्ष प्रीमियम पर प्रदान करती है।',
+    ministry_en: 'Ministry of Finance',
+    ministry_hi: 'वित्त मंत्रालय',
+    category: 'insurance',
+    state: 'All India',
+    workType: 'any',
+    industrySector: 'any',
+    skillLevel: 'any',
+    demographic: 'all',
+    socioEconomic: 'low_income',
+    employmentStatus: 'daily_wage',
+    eligibilityCriteria: [
+      { en: 'Age 18 to 50 years', hi: '18 से 50 वर्ष आयु' },
+      { en: 'Savings bank account holder', hi: 'बचत बैंक खाताधारक' },
+      { en: 'Consent to auto-debit premium', hi: 'प्रीमियम ऑटो-डेबिट की सहमति' },
+    ],
+    benefits: [
+      { en: '₹2 lakh life cover for death due to any reason', hi: 'किसी भी कारण से मृत्यु पर ₹2 लाख जीवन कवर' },
+      { en: 'Annual premium of ₹436 only', hi: 'मात्र ₹436 वार्षिक प्रीमियम' },
+      { en: 'Renewable every year', hi: 'हर साल नवीकरणीय' },
+    ],
+    documentsRequired: [
+      { en: 'Aadhaar Card', hi: 'आधार कार्ड' },
+      { en: 'Bank Account Passbook', hi: 'बैंक खाता पासबुक' },
+      { en: 'Nominee details', hi: 'नॉमिनी विवरण' },
+    ],
+    applicationSteps: [
+      { step: 1, en: 'Go to your bank or use bank mobile app', hi: 'अपनी बैंक पर जाएं या बैंक मोबाइल ऐप का उपयोग करें' },
+      { step: 2, en: 'Fill PMJJBY enrollment form with nominee details', hi: 'नॉमिनी विवरण के साथ PMJJBY नामांकन फॉर्म भरें' },
+      { step: 3, en: 'Authorize auto-debit of ₹436 per year', hi: '₹436 प्रति वर्ष ऑटो-डेबिट अधिकृत करें' },
+      { step: 4, en: 'Policy certificate issued by insurance company', hi: 'बीमा कंपनी द्वारा पॉलिसी प्रमाण पत्र जारी' },
+    ],
+    officialLink: 'https://jansuraksha.gov.in',
+    portalName: 'Jan Suraksha Portal',
+    youtubeVideoId: 'B5q9OE8q0EY',
+    youtubeTitle_en: 'PMJJBY Life Insurance — Enroll in 5 Minutes',
+    youtubeTitle_hi: 'PMJJBY जीवन बीमा — 5 मिनट में नामांकन करें',
+    tags: ['life insurance', 'death benefit', '₹436', 'bank', 'PMJJBY'],
+    isActive: true,
+    isFeatured: false,
+  },
+
+  // ─── 6. BOCW ─────────────────────────────────────────────────────────────
+  {
+    name_en: 'Building & Other Construction Workers Welfare Scheme (BOCW)',
+    name_hi: 'भवन एवं अन्य निर्माण कर्मकार कल्याण योजना (BOCW)',
+    description_en:
+      'State-managed welfare scheme for construction workers providing financial assistance for education, marriage, medical treatment, and maternity benefits.',
+    description_hi:
+      'निर्माण श्रमिकों के लिए राज्य-प्रबंधित कल्याण योजना जो शिक्षा, विवाह, चिकित्सा उपचार और मातृत्व लाभ के लिए वित्तीय सहायता प्रदान करती है।',
+    ministry_en: 'Ministry of Labour & Employment (State-wise Boards)',
+    ministry_hi: 'श्रम एवं रोजगार मंत्रालय (राज्यवार बोर्ड)',
+    category: 'construction',
+    state: 'All India',
+    workType: 'construction',
+    industrySector: 'building_construction',
+    skillLevel: 'any',
+    demographic: 'all',
+    socioEconomic: 'low_income',
+    employmentStatus: 'daily_wage',
+    eligibilityCriteria: [
+      { en: 'Must be a building/construction worker', hi: 'भवन/निर्माण श्रमिक होना चाहिए' },
+      { en: 'Age 18 to 60 years', hi: '18 से 60 वर्ष आयु' },
+      { en: 'Minimum 90 days of construction work in preceding year', hi: 'पिछले वर्ष में न्यूनतम 90 दिन निर्माण कार्य' },
+      { en: 'Must be registered with State BOCW Board', hi: 'राज्य BOCW बोर्ड में पंजीकृत होना चाहिए' },
+    ],
+    benefits: [
+      { en: 'Education assistance for children (₹1,000–₹15,000/year)', hi: 'बच्चों के लिए शिक्षा सहायता (₹1,000–₹15,000/वर्ष)' },
+      { en: 'Marriage assistance (₹25,000–₹55,000)', hi: 'विवाह सहायता (₹25,000–₹55,000)' },
+      { en: 'Medical assistance (₹1,000–₹1 lakh)', hi: 'चिकित्सा सहायता (₹1,000–₹1 लाख)' },
+      { en: 'Maternity benefit (₹10,000–₹25,000)', hi: 'मातृत्व लाभ (₹10,000–₹25,000)' },
+      { en: 'Death/disability benefit (₹1 lakh–₹2 lakh)', hi: 'मृत्यु/विकलांगता लाभ (₹1 लाख–₹2 लाख)' },
+      { en: 'Pension after retirement', hi: 'सेवानिवृत्ति के बाद पेंशन' },
+    ],
+    documentsRequired: [
+      { en: 'Aadhaar Card', hi: 'आधार कार्ड' },
+      { en: 'Certificate from contractor/employer (90+ days work)', hi: 'ठेकेदार/नियोक्ता से प्रमाण पत्र (90+ दिन कार्य)' },
+      { en: 'Bank account passbook', hi: 'बैंक खाता पासबुक' },
+      { en: 'Passport size photographs', hi: 'पासपोर्ट आकार की तस्वीरें' },
+      { en: 'Ration Card or residence proof', hi: 'राशन कार्ड या निवास प्रमाण' },
+    ],
+    applicationSteps: [
+      { step: 1, en: 'Visit your State Labour Department or BOCW Board office', hi: 'अपने राज्य श्रम विभाग या BOCW बोर्ड कार्यालय पर जाएं' },
+      { step: 2, en: 'Get employer certificate (90+ days work in construction)', hi: 'नियोक्ता प्रमाण पत्र प्राप्त करें (निर्माण में 90+ दिन कार्य)' },
+      { step: 3, en: 'Fill registration form and submit documents', hi: 'पंजीकरण फॉर्म भरें और दस्तावेज़ जमा करें' },
+      { step: 4, en: 'Pay registration fee (₹25–₹50, varies by state)', hi: 'पंजीकरण शुल्क दें (₹25–₹50, राज्य अनुसार)' },
+      { step: 5, en: 'Receive BOCW registration card with benefits ID', hi: 'लाभ आईडी के साथ BOCW पंजीकरण कार्ड प्राप्त करें' },
+    ],
+    officialLink: 'https://labour.gov.in/bocw',
+    portalName: 'Labour Ministry BOCW Portal',
+    youtubeVideoId: 'kTMF5qXOW3g',
+    youtubeTitle_en: 'BOCW Registration — Construction Worker Benefits Guide',
+    youtubeTitle_hi: 'BOCW पंजीकरण — निर्माण श्रमिक लाभ गाइड',
+    tags: ['construction', 'labour welfare', 'education benefit', 'marriage benefit', 'BOCW'],
+    isActive: true,
+    isFeatured: false,
+  },
+
+  // ─── 7. e-Shram ───────────────────────────────────────────────────────────
+  {
+    name_en: 'e-Shram Card — National Database of Unorganised Workers',
+    name_hi: 'ई-श्रम कार्ड — असंगठित श्रमिकों का राष्ट्रीय डेटाबेस',
+    description_en:
+      'National portal to register unorganised workers and link them to social security schemes. Get a Universal Account Number (UAN) and ₹2 lakh accident insurance free.',
+    description_hi:
+      'असंगठित श्रमिकों को पंजीकृत करने और उन्हें सामाजिक सुरक्षा योजनाओं से जोड़ने का राष्ट्रीय पोर्टल। यूनिवर्सल अकाउंट नंबर (UAN) और ₹2 लाख दुर्घटना बीमा मुफ्त प्राप्त करें।',
+    ministry_en: 'Ministry of Labour & Employment',
+    ministry_hi: 'श्रम एवं रोजगार मंत्रालय',
+    category: 'employment',
+    state: 'All India',
+    workType: 'any',
+    industrySector: 'any',
+    skillLevel: 'any',
+    demographic: 'all',
+    socioEconomic: 'any',
+    employmentStatus: 'daily_wage',
+    eligibilityCriteria: [
+      { en: 'Any unorganised sector worker', hi: 'कोई भी असंगठित क्षेत्र का श्रमिक' },
+      { en: 'Age 16 to 59 years', hi: '16 से 59 वर्ष आयु' },
+      { en: 'Not a member of EPFO or ESIC', hi: 'EPFO या ESIC का सदस्य नहीं' },
+      { en: 'Aadhaar linked mobile number required', hi: 'आधार से जुड़ा मोबाइल नंबर आवश्यक' },
+    ],
+    benefits: [
+      { en: 'Universal Account Number (UAN) for lifetime', hi: 'जीवनभर के लिए यूनिवर्सल अकाउंट नंबर (UAN)' },
+      { en: '₹2 lakh free accident insurance (PMSBY coverage)', hi: 'निःशुल्क ₹2 लाख दुर्घटना बीमा (PMSBY कवरेज)' },
+      { en: 'Automatic linkage to future government schemes', hi: 'भविष्य की सरकारी योजनाओं से स्वचालित लिंकेज' },
+      { en: 'Priority access to employment schemes', hi: 'रोजगार योजनाओं तक प्राथमिकता पहुंच' },
+    ],
+    documentsRequired: [
+      { en: 'Aadhaar Card', hi: 'आधार कार्ड' },
+      { en: 'Mobile number linked to Aadhaar', hi: 'आधार से जुड़ा मोबाइल नंबर' },
+      { en: 'Bank account details', hi: 'बैंक खाता विवरण' },
+    ],
+    applicationSteps: [
+      { step: 1, en: 'Visit eshram.gov.in on mobile or computer', hi: 'मोबाइल या कंप्यूटर पर eshram.gov.in पर जाएं' },
+      { step: 2, en: 'Click "Register on e-Shram" and enter Aadhaar number', hi: '"e-Shram पर पंजीकरण करें" पर क्लिक करें और आधार नंबर दर्ज करें' },
+      { step: 3, en: 'Verify with OTP sent to Aadhaar-linked mobile', hi: 'आधार से जुड़े मोबाइल पर भेजे गए OTP से सत्यापित करें' },
+      { step: 4, en: 'Fill basic personal and occupation details', hi: 'बुनियादी व्यक्तिगत और व्यवसाय विवरण भरें' },
+      { step: 5, en: 'Download e-Shram Card with your UAN number', hi: 'अपने UAN नंबर के साथ ई-श्रम कार्ड डाउनलोड करें' },
+    ],
+    officialLink: 'https://eshram.gov.in',
+    portalName: 'e-Shram Portal',
+    youtubeVideoId: 'ZmFfXZJEiLE',
+    youtubeTitle_en: 'e-Shram Card Registration — Step by Step in 2 Minutes',
+    youtubeTitle_hi: 'ई-श्रम कार्ड पंजीकरण — 2 मिनट में चरण-दर-चरण',
+    tags: ['e-shram', 'UAN', 'registration', 'identity card', 'accident insurance', 'unorganised'],
+    isActive: true,
+    isFeatured: true,
+  },
+
+  // ─── 8. MGNREGA ───────────────────────────────────────────────────────────
+  {
+    name_en: 'Mahatma Gandhi National Rural Employment Guarantee Act (MGNREGA)',
+    name_hi: 'महात्मा गांधी राष्ट्रीय ग्रामीण रोजगार गारंटी अधिनियम (मनरेगा)',
+    description_en:
+      'Guarantees 100 days of wage employment per year to rural households. One of the world\'s largest public works programme.',
+    description_hi:
+      'ग्रामीण परिवारों को प्रति वर्ष 100 दिन की मजदूरी रोजगार की गारंटी देता है। दुनिया के सबसे बड़े सार्वजनिक कार्यक्रमों में से एक।',
+    ministry_en: 'Ministry of Rural Development',
+    ministry_hi: 'ग्रामीण विकास मंत्रालय',
+    category: 'employment',
+    state: 'All India',
+    workType: 'construction',
+    industrySector: 'roads_highways',
+    skillLevel: 'unskilled',
+    demographic: 'rural',
+    socioEconomic: 'bpl',
+    employmentStatus: 'unemployed',
+    eligibilityCriteria: [
+      { en: 'Adult member of a rural household', hi: 'ग्रामीण परिवार का वयस्क सदस्य' },
+      { en: 'Willing to do unskilled manual labour', hi: 'अकुशल शारीरिक श्रम करने को तैयार' },
+      { en: 'Registered Job Card holder', hi: 'पंजीकृत जॉब कार्ड धारक' },
+    ],
+    benefits: [
+      { en: 'Guaranteed 100 days work per household per year', hi: 'प्रति परिवार प्रति वर्ष 100 दिन कार्य की गारंटी' },
+      { en: 'Minimum daily wages (₹204–₹333 depending on state)', hi: 'न्यूनतम दैनिक मजदूरी (राज्य अनुसार ₹204–₹333)' },
+      { en: 'Unemployment allowance if work not provided in 15 days', hi: '15 दिन में काम न मिलने पर बेरोजगारी भत्ता' },
+      { en: 'Direct payment to bank account', hi: 'बैंक खाते में सीधा भुगतान' },
+    ],
+    documentsRequired: [
+      { en: 'Aadhaar Card', hi: 'आधार कार्ड' },
+      { en: 'Bank account details', hi: 'बैंक खाता विवरण' },
+      { en: 'Ration Card or residence proof (rural area)', hi: 'राशन कार्ड या निवास प्रमाण (ग्रामीण क्षेत्र)' },
+      { en: 'Passport size photographs', hi: 'पासपोर्ट आकार की तस्वीरें' },
+    ],
+    applicationSteps: [
+      { step: 1, en: 'Visit your village Gram Panchayat office', hi: 'अपने गांव की ग्राम पंचायत कार्यालय पर जाएं' },
+      { step: 2, en: 'Submit application for Job Card registration', hi: 'जॉब कार्ड पंजीकरण के लिए आवेदन जमा करें' },
+      { step: 3, en: 'Job Card issued within 15 days with photo', hi: 'फोटो के साथ 15 दिन के भीतर जॉब कार्ड जारी' },
+      { step: 4, en: 'Submit work demand application at Gram Panchayat', hi: 'ग्राम पंचायत में काम की मांग आवेदन जमा करें' },
+      { step: 5, en: 'Work allocated within 15 days — wages credited to bank', hi: '15 दिन के भीतर काम आवंटित — मजदूरी बैंक में जमा' },
+    ],
+    officialLink: 'https://nrega.nic.in',
+    portalName: 'NREGA Portal',
+    youtubeVideoId: 'pnJKNqOq1DE',
+    youtubeTitle_en: 'MGNREGA Job Card — How to Register & Get Work',
+    youtubeTitle_hi: 'मनरेगा जॉब कार्ड — पंजीकरण और काम कैसे पाएं',
+    tags: ['rural employment', '100 days', 'job card', 'MGNREGA', 'daily wages', 'gram panchayat'],
+    isActive: true,
+    isFeatured: false,
+  },
+
+  // ─── 9. PMAY-G ────────────────────────────────────────────────────────────
+  {
+    name_en: 'Pradhan Mantri Awas Yojana — Gramin (PMAY-G)',
+    name_hi: 'प्रधानमंत्री आवास योजना — ग्रामीण (PMAY-G)',
+    description_en:
+      'Housing for All scheme providing financial assistance to BPL rural families for construction of pucca houses. Grant of ₹1.20–1.30 lakh per house.',
+    description_hi:
+      'BPL ग्रामीण परिवारों को पक्के मकान निर्माण के लिए ₹1.20–1.30 लाख अनुदान देने वाली "सबके लिए आवास" योजना।',
+    ministry_en: 'Ministry of Rural Development',
+    ministry_hi: 'ग्रामीण विकास मंत्रालय',
+    category: 'housing',
+    state: 'All India',
+    workType: 'any',
+    industrySector: 'any',
+    skillLevel: 'any',
+    demographic: 'rural',
+    socioEconomic: 'bpl',
+    employmentStatus: 'any',
+    eligibilityCriteria: [
+      { en: 'Houseless or living in kutcha/dilapidated house', hi: 'बेघर या कच्चे/जर्जर मकान में रहने वाला' },
+      { en: 'Name in SECC 2011 list or state survey', hi: 'SECC 2011 सूची या राज्य सर्वेक्षण में नाम' },
+      { en: 'BPL family in rural area', hi: 'ग्रामीण क्षेत्र में BPL परिवार' },
+      { en: 'Priority: SC/ST, widows, disabled persons', hi: 'प्राथमिकता: SC/ST, विधवाएं, दिव्यांग व्यक्ति' },
+    ],
+    benefits: [
+      { en: '₹1.20 lakh grant (Plains) / ₹1.30 lakh (North-East/Hilly)', hi: '₹1.20 लाख अनुदान (मैदानी) / ₹1.30 लाख (पूर्वोत्तर/पहाड़ी)' },
+      { en: '90–95 days MGNREGA wages for labour', hi: 'श्रम के लिए 90–95 दिन MGNREGA मजदूरी' },
+      { en: 'Toilet construction through Swachh Bharat Mission', hi: 'स्वच्छ भारत मिशन के तहत शौचालय निर्माण' },
+      { en: 'LPG connection under PM Ujjwala Yojana', hi: 'PM उज्ज्वला योजना के तहत LPG कनेक्शन' },
+    ],
+    documentsRequired: [
+      { en: 'Aadhaar Card', hi: 'आधार कार्ड' },
+      { en: 'SECC ID / Job Card', hi: 'SECC आईडी / जॉब कार्ड' },
+      { en: 'Bank account (linked to Aadhaar)', hi: 'बैंक खाता (आधार से जुड़ा)' },
+      { en: 'Land ownership documents', hi: 'भूमि स्वामित्व दस्तावेज़' },
+    ],
+    applicationSteps: [
+      { step: 1, en: 'Contact your Gram Panchayat to check eligibility in SECC list', hi: 'SECC सूची में पात्रता जांचने के लिए ग्राम पंचायत से संपर्क करें' },
+      { step: 2, en: 'Gram Sabha selects beneficiaries from approved list', hi: 'ग्राम सभा अनुमोदित सूची से लाभार्थियों का चयन करती है' },
+      { step: 3, en: 'Submit required documents to block/district office', hi: 'ब्लॉक/जिला कार्यालय में आवश्यक दस्तावेज़ जमा करें' },
+      { step: 4, en: 'Funds released in instalments to bank account as construction progresses', hi: 'निर्माण प्रगति के अनुसार बैंक खाते में किश्तों में राशि जारी' },
+    ],
+    officialLink: 'https://pmayg.nic.in',
+    portalName: 'PMAY-G Portal',
+    youtubeVideoId: 'H4_gT1cBGF4',
+    youtubeTitle_en: 'PMAY Gramin — How to Apply for Free House 2024',
+    youtubeTitle_hi: 'PMAY ग्रामीण — मुफ्त मकान के लिए 2024 में आवेदन',
+    tags: ['housing', 'rural', 'BPL', 'pucca house', 'PMAY', 'construction grant'],
+    isActive: true,
+    isFeatured: false,
+  },
+
+  // ─── 10. Atal Pension Yojana ──────────────────────────────────────────────
+  {
+    name_en: 'Atal Pension Yojana (APY)',
+    name_hi: 'अटल पेंशन योजना (APY)',
+    description_en:
+      'Government-backed pension scheme for unorganised sector workers ensuring a guaranteed monthly pension of ₹1,000–₹5,000 after age 60.',
+    description_hi:
+      'असंगठित क्षेत्र के श्रमिकों के लिए सरकार समर्थित पेंशन योजना जो 60 वर्ष की आयु के बाद ₹1,000–₹5,000 मासिक पेंशन की गारंटी देती है।',
+    ministry_en: 'Ministry of Finance / PFRDA',
+    ministry_hi: 'वित्त मंत्रालय / PFRDA',
+    category: 'pension',
+    state: 'All India',
+    workType: 'any',
+    industrySector: 'any',
+    skillLevel: 'any',
+    demographic: 'all',
+    socioEconomic: 'low_income',
+    employmentStatus: 'daily_wage',
+    eligibilityCriteria: [
+      { en: 'Age 18 to 40 years', hi: '18 से 40 वर्ष आयु' },
+      { en: 'Savings bank or post office account', hi: 'बचत बैंक या डाकघर खाता' },
+      { en: 'Not an income tax payer', hi: 'आयकर दाता नहीं होना चाहिए' },
+    ],
+    benefits: [
+      { en: 'Guaranteed pension ₹1,000–₹5,000/month after 60', hi: '60 के बाद ₹1,000–₹5,000/माह गारंटीड पेंशन' },
+      { en: 'Spouse gets same pension on subscriber\'s death', hi: 'अंशधारक की मृत्यु पर पति/पत्नी को समान पेंशन' },
+      { en: 'Nominee gets full corpus on both deaths', hi: 'दोनों की मृत्यु पर नॉमिनी को पूरा कोष' },
+    ],
+    documentsRequired: [
+      { en: 'Aadhaar Card', hi: 'आधार कार्ड' },
+      { en: 'Bank Account details', hi: 'बैंक खाता विवरण' },
+      { en: 'Mobile number', hi: 'मोबाइल नंबर' },
+    ],
+    applicationSteps: [
+      { step: 1, en: 'Visit your bank or open on mobile banking app', hi: 'अपनी बैंक पर जाएं या मोबाइल बैंकिंग ऐप पर खोलें' },
+      { step: 2, en: 'Fill APY subscriber form with Aadhaar and nominee details', hi: 'आधार और नॉमिनी विवरण के साथ APY सब्सक्राइबर फॉर्म भरें' },
+      { step: 3, en: 'Choose pension amount (₹1K–₹5K) — contribution auto-calculated', hi: 'पेंशन राशि चुनें (₹1K–₹5K) — अंशदान स्वतः गणना होगी' },
+      { step: 4, en: 'Auto-debit set up — PRAN (Permanent Retirement Account Number) generated', hi: 'ऑटो-डेबिट सेट — PRAN (स्थायी सेवानिवृत्ति खाता संख्या) उत्पन्न' },
+    ],
+    officialLink: 'https://npscra.nsdl.co.in/nsdlcra/nationalPensionSystem/AtaalPension',
+    portalName: 'NSDL NPS Portal',
+    youtubeVideoId: 'fvFdV8JqBso',
+    youtubeTitle_en: 'Atal Pension Yojana — Complete Guide to Apply Online',
+    youtubeTitle_hi: 'अटल पेंशन योजना — ऑनलाइन आवेदन की पूरी गाइड',
+    tags: ['pension', '₹5000 monthly', 'retirement', 'bank', 'APY', 'PFRDA'],
+    isActive: true,
+    isFeatured: false,
+  },
+
+  // ─── 11. MUDRA Loan ───────────────────────────────────────────────────────
+  {
+    name_en: 'Pradhan Mantri MUDRA Yojana (PMMY)',
+    name_hi: 'प्रधानमंत्री मुद्रा योजना (PMMY)',
+    description_en:
+      'Provides loans from ₹50,000 to ₹10 lakh to small businesses and self-employed individuals without collateral through banks and MFIs.',
+    description_hi:
+      'बैंकों और MFIs के माध्यम से छोटे व्यवसायों और स्व-रोजगार व्यक्तियों को बिना जमानत के ₹50,000 से ₹10 लाख तक ऋण प्रदान करता है।',
+    ministry_en: 'Ministry of Finance / MUDRA',
+    ministry_hi: 'वित्त मंत्रालय / MUDRA',
+    category: 'financial_inclusion',
+    state: 'All India',
+    workType: 'any',
+    industrySector: 'any',
+    skillLevel: 'semi_skilled',
+    demographic: 'all',
+    socioEconomic: 'low_income',
+    employmentStatus: 'self_employed',
+    eligibilityCriteria: [
+      { en: 'Non-farm income-generating activity', hi: 'गैर-कृषि आय-सृजन गतिविधि' },
+      { en: 'Small business or manufacturing unit', hi: 'छोटा व्यवसाय या विनिर्माण इकाई' },
+      { en: 'No previous loan default', hi: 'कोई पिछला ऋण चूक नहीं' },
+    ],
+    benefits: [
+      { en: 'Shishu: Up to ₹50,000 for new businesses', hi: 'शिशु: नए व्यवसायों के लिए ₹50,000 तक' },
+      { en: 'Kishor: ₹50,001 to ₹5 lakh for established businesses', hi: 'किशोर: स्थापित व्यवसायों के लिए ₹50,001 से ₹5 लाख' },
+      { en: 'Tarun: ₹5 lakh to ₹10 lakh for expansion', hi: 'तरुण: विस्तार के लिए ₹5 लाख से ₹10 लाख' },
+      { en: 'No collateral required', hi: 'कोई जमानत आवश्यक नहीं' },
+    ],
+    documentsRequired: [
+      { en: 'Aadhaar Card and PAN Card', hi: 'आधार कार्ड और पैन कार्ड' },
+      { en: 'Business plan / activity details', hi: 'व्यापार योजना / गतिविधि विवरण' },
+      { en: 'Bank statements (6 months)', hi: 'बैंक स्टेटमेंट (6 महीने)' },
+      { en: 'Quotation for machinery (if applicable)', hi: 'मशीनरी का कोटेशन (यदि लागू हो)' },
+    ],
+    applicationSteps: [
+      { step: 1, en: 'Visit mudra.org.in or nearest bank/NBFC/MFI', hi: 'mudra.org.in पर जाएं या नजदीकी बैंक/NBFC/MFI पर जाएं' },
+      { step: 2, en: 'Choose loan category: Shishu/Kishor/Tarun', hi: 'ऋण श्रेणी चुनें: शिशु/किशोर/तरुण' },
+      { step: 3, en: 'Submit application with business plan and documents', hi: 'व्यापार योजना और दस्तावेज़ों के साथ आवेदन जमा करें' },
+      { step: 4, en: 'Bank processes application in 7–30 days', hi: 'बैंक 7–30 दिनों में आवेदन प्रक्रिया करता है' },
+      { step: 5, en: 'Loan disbursed to bank account with MUDRA card', hi: 'MUDRA कार्ड के साथ बैंक खाते में ऋण वितरित' },
+    ],
+    officialLink: 'https://www.mudra.org.in',
+    portalName: 'MUDRA Portal',
+    youtubeVideoId: 'tGRniWZR3Ds',
+    youtubeTitle_en: 'MUDRA Loan — How to Apply for ₹10 Lakh Without Guarantee',
+    youtubeTitle_hi: 'मुद्रा लोन — बिना गारंटी ₹10 लाख के लिए आवेदन',
+    tags: ['loan', 'self employment', 'small business', 'no collateral', 'MUDRA', 'entrepreneur'],
+    isActive: true,
+    isFeatured: false,
+  },
+
+  // ─── 12. Janani Suraksha Yojana ───────────────────────────────────────────
+  {
+    name_en: 'Janani Suraksha Yojana (JSY)',
+    name_hi: 'जननी सुरक्षा योजना (JSY)',
+    description_en:
+      'Safe motherhood intervention promoting institutional delivery among poor pregnant women by providing cash assistance of ₹1,400–₹1,400.',
+    description_hi:
+      'गरीब गर्भवती महिलाओं के बीच संस्थागत प्रसव को बढ़ावा देने के लिए ₹1,400 की नकद सहायता प्रदान करने वाला सुरक्षित मातृत्व हस्तक्षेप।',
+    ministry_en: 'Ministry of Health & Family Welfare',
+    ministry_hi: 'स्वास्थ्य एवं परिवार कल्याण मंत्रालय',
+    category: 'women_welfare',
+    state: 'All India',
+    workType: 'any',
+    industrySector: 'any',
+    skillLevel: 'any',
+    demographic: 'women',
+    socioEconomic: 'bpl',
+    employmentStatus: 'any',
+    eligibilityCriteria: [
+      { en: 'Pregnant woman from BPL family', hi: 'BPL परिवार की गर्भवती महिला' },
+      { en: 'Age 19 years or above', hi: '19 वर्ष या उससे अधिक आयु' },
+      { en: 'Up to 2 live births eligible', hi: '2 जीवित जन्म तक पात्र' },
+      { en: 'Delivery in government or accredited private hospital', hi: 'सरकारी या मान्यता प्राप्त निजी अस्पताल में प्रसव' },
+    ],
+    benefits: [
+      { en: '₹1,400 cash for rural women (₹1,000 for urban)', hi: 'ग्रामीण महिलाओं के लिए ₹1,400 नकद (शहरी के लिए ₹1,000)' },
+      { en: 'Free ante-natal care and immunisation', hi: 'निःशुल्क प्रसव पूर्व देखभाल और टीकाकरण' },
+      { en: 'ASHA worker support throughout pregnancy', hi: 'पूरी गर्भावस्था के दौरान ASHA कार्यकर्ता सहायता' },
+    ],
+    documentsRequired: [
+      { en: 'BPL Card or Ration Card', hi: 'BPL कार्ड या राशन कार्ड' },
+      { en: 'Aadhaar Card', hi: 'आधार कार्ड' },
+      { en: 'Mother and Child Protection Card', hi: 'माता एवं शिशु संरक्षण कार्ड' },
+      { en: 'Bank account details', hi: 'बैंक खाता विवरण' },
+    ],
+    applicationSteps: [
+      { step: 1, en: 'Register at nearest government health centre (PHC/CHC) during pregnancy', hi: 'गर्भावस्था के दौरान नजदीकी सरकारी स्वास्थ्य केंद्र (PHC/CHC) पर पंजीकरण करें' },
+      { step: 2, en: 'Contact ASHA worker in your village or ward', hi: 'अपने गांव या वार्ड में ASHA कार्यकर्ता से संपर्क करें' },
+      { step: 3, en: 'Complete antenatal check-ups (minimum 3 ANC)', hi: 'प्रसव पूर्व जांच पूरी करें (न्यूनतम 3 ANC)' },
+      { step: 4, en: 'Deliver in accredited hospital — cash transferred to bank', hi: 'मान्यता प्राप्त अस्पताल में प्रसव करें — बैंक में नकद हस्तांतरित' },
+    ],
+    officialLink: 'https://nhm.gov.in/index1.php?lang=1&level=3&sublinkid=841&lid=309',
+    portalName: 'National Health Mission Portal',
+    youtubeVideoId: 'k8kE8sS5T8c',
+    youtubeTitle_en: 'Janani Suraksha Yojana — Cash Benefit for Pregnant Women',
+    youtubeTitle_hi: 'जननी सुरक्षा योजना — गर्भवती महिलाओं के लिए नकद लाभ',
+    tags: ['women', 'maternity', 'pregnancy', 'cash benefit', 'BPL', 'JSY', 'childbirth'],
+    isActive: true,
+    isFeatured: false,
+  },
+
+  // ─── 13. NAPS ─────────────────────────────────────────────────────────────
+  {
+    name_en: 'National Apprenticeship Promotion Scheme (NAPS)',
+    name_hi: 'राष्ट्रीय शिक्युता संवर्धन योजना (NAPS)',
+    description_en:
+      'Promotes apprenticeship training by sharing 25% of stipend cost with employers (up to ₹1,500/month per apprentice), creating earn-while-you-learn opportunities.',
+    description_hi:
+      'नियोक्ताओं के साथ 25% वेतन लागत साझा करके (प्रति शिक्यु ₹1,500/माह तक) प्रशिक्षुता प्रशिक्षण को बढ़ावा देता है।',
+    ministry_en: 'Ministry of Skill Development & Entrepreneurship',
+    ministry_hi: 'कौशल विकास एवं उद्यमशीलता मंत्रालय',
+    category: 'skill_development',
+    state: 'All India',
+    workType: 'manufacturing',
+    industrySector: 'any',
+    skillLevel: 'semi_skilled',
+    demographic: 'youth',
+    socioEconomic: 'any',
+    employmentStatus: 'unemployed',
+    eligibilityCriteria: [
+      { en: 'Age 14 years and above', hi: '14 वर्ष और उससे अधिक आयु' },
+      { en: 'Minimum 5th class pass', hi: 'न्यूनतम 5वीं पास' },
+      { en: 'Seeking apprenticeship in any industry', hi: 'किसी भी उद्योग में शिक्युता की तलाश' },
+    ],
+    benefits: [
+      { en: 'Earn while you learn (₹5,000–₹9,000/month stipend)', hi: 'सीखते हुए कमाएं (₹5,000–₹9,000/माह वेतन)' },
+      { en: 'Government pays 25% of stipend to employer', hi: 'सरकार नियोक्ता को 25% वेतन देती है' },
+      { en: 'NCVT / NAPS certificate on completion', hi: 'पूरा होने पर NCVT / NAPS प्रमाण पत्र' },
+      { en: 'On-the-job practical training in real industry', hi: 'वास्तविक उद्योग में व्यावहारिक प्रशिक्षण' },
+    ],
+    documentsRequired: [
+      { en: 'Aadhaar Card', hi: 'आधार कार्ड' },
+      { en: 'Educational certificates', hi: 'शैक्षिक प्रमाण पत्र' },
+      { en: 'Bank account details', hi: 'बैंक खाता विवरण' },
+    ],
+    applicationSteps: [
+      { step: 1, en: 'Register on apprenticeshipindia.org', hi: 'apprenticeshipindia.org पर पंजीकरण करें' },
+      { step: 2, en: 'Browse available apprenticeship opportunities', hi: 'उपलब्ध शिक्युता अवसर ब्राउज़ करें' },
+      { step: 3, en: 'Apply to employer and get contract signed', hi: 'नियोक्ता को आवेदन करें और अनुबंध पर हस्ताक्षर करें' },
+      { step: 4, en: 'Start training — stipend credited monthly', hi: 'प्रशिक्षण शुरू करें — मासिक वेतन जमा होगा' },
+      { step: 5, en: 'Pass assessment and get NAPS certificate', hi: 'मूल्यांकन पास करें और NAPS प्रमाण पत्र प्राप्त करें' },
+    ],
+    officialLink: 'https://apprenticeshipindia.org',
+    portalName: 'Apprenticeship India Portal',
+    youtubeVideoId: 'Xm8hj7BdNuc',
+    youtubeTitle_en: 'NAPS Apprenticeship — Register & Find Placement 2024',
+    youtubeTitle_hi: 'NAPS शिक्युता — पंजीकरण और नियुक्ति 2024',
+    tags: ['apprenticeship', 'earn while learn', 'stipend', 'certificate', 'youth', 'NAPS'],
+    isActive: true,
+    isFeatured: false,
+  },
+
+  // ─── 14. UP Shramik Card ──────────────────────────────────────────────────
+  {
+    name_en: 'Uttar Pradesh Shramik Panjeeyan (Labour Registration Card)',
+    name_hi: 'उत्तर प्रदेश श्रमिक पंजीयन (श्रमिक कार्ड)',
+    description_en:
+      'UP state scheme for registered labourers providing free cycles, medical assistance, daughter\'s marriage grant (₹55,000), and education scholarships.',
+    description_hi:
+      'पंजीकृत श्रमिकों को मुफ्त साइकिल, चिकित्सा सहायता, बेटी की शादी अनुदान (₹55,000) और शिक्षा छात्रवृत्ति प्रदान करने वाली UP राज्य योजना।',
+    ministry_en: 'UP Labour Department',
+    ministry_hi: 'UP श्रम विभाग',
+    category: 'construction',
+    state: 'Uttar Pradesh',
+    workType: 'construction',
+    industrySector: 'building_construction',
+    skillLevel: 'any',
+    demographic: 'all',
+    socioEconomic: 'low_income',
+    employmentStatus: 'daily_wage',
+    eligibilityCriteria: [
+      { en: 'Resident of Uttar Pradesh', hi: 'उत्तर प्रदेश का निवासी' },
+      { en: 'Construction or unorganised sector worker', hi: 'निर्माण या असंगठित क्षेत्र का श्रमिक' },
+      { en: 'Age 18 to 60 years', hi: '18 से 60 वर्ष आयु' },
+      { en: 'Minimum 90 days work in last 12 months', hi: 'पिछले 12 महीनों में न्यूनतम 90 दिन कार्य' },
+    ],
+    benefits: [
+      { en: 'Free bicycle for registered workers', hi: 'पंजीकृत श्रमिकों को मुफ्त साइकिल' },
+      { en: '₹55,000 for daughter\'s marriage (Santanon ki Shadi Yojana)', hi: 'बेटी की शादी के लिए ₹55,000 (संतानों की शादी योजना)' },
+      { en: 'Scholarship for children (₹100–₹25,000)', hi: 'बच्चों के लिए छात्रवृत्ति (₹100–₹25,000)' },
+      { en: 'Medical assistance up to ₹1 lakh', hi: 'चिकित्सा सहायता ₹1 लाख तक' },
+      { en: 'Housing assistance grant', hi: 'आवास सहायता अनुदान' },
+    ],
+    documentsRequired: [
+      { en: 'Aadhaar Card', hi: 'आधार कार्ड' },
+      { en: 'UP Domicile Certificate', hi: 'UP निवास प्रमाण पत्र' },
+      { en: 'Work Certificate from employer (90+ days)', hi: 'नियोक्ता से कार्य प्रमाण पत्र (90+ दिन)' },
+      { en: 'Bank Passbook', hi: 'बैंक पासबुक' },
+      { en: 'Ration Card', hi: 'राशन कार्ड' },
+    ],
+    applicationSteps: [
+      { step: 1, en: 'Visit upbocw.in or Jan Seva Kendra (CSC)', hi: 'upbocw.in पर जाएं या जन सेवा केंद्र (CSC) पर जाएं' },
+      { step: 2, en: 'Click "Worker Registration" and fill Aadhaar details', hi: '"श्रमिक पंजीकरण" पर क्लिक करें और आधार विवरण भरें' },
+      { step: 3, en: 'Upload documents and employer work certificate', hi: 'दस्तावेज़ और नियोक्ता कार्य प्रमाण पत्र अपलोड करें' },
+      { step: 4, en: 'Pay ₹40 registration fee online or at CSC', hi: 'ऑनलाइन या CSC पर ₹40 पंजीकरण शुल्क दें' },
+      { step: 5, en: 'Receive Shramik Card with unique ID — apply for benefits', hi: 'अनूठी आईडी के साथ श्रमिक कार्ड प्राप्त करें — लाभ के लिए आवेदन करें' },
+    ],
+    officialLink: 'https://www.upbocw.in',
+    portalName: 'UP BOCW Portal',
+    youtubeVideoId: 'qwbY3s98X1M',
+    youtubeTitle_en: 'UP Shramik Card Registration Online 2024 — Full Process',
+    youtubeTitle_hi: 'UP श्रमिक कार्ड ऑनलाइन पंजीकरण 2024 — पूरी प्रक्रिया',
+    tags: ['UP', 'Uttar Pradesh', 'shramik card', 'labour card', 'free bicycle', 'marriage grant'],
+    isActive: true,
+    isFeatured: true,
+  },
+
+  // ─── 15. PM-KISAN ─────────────────────────────────────────────────────────
+  {
+    name_en: 'Pradhan Mantri Kisan Samman Nidhi (PM-KISAN)',
+    name_hi: 'प्रधानमंत्री किसान सम्मान निधि (PM-KISAN)',
+    description_en:
+      'Direct income support of ₹6,000 per year in three equal instalments to small and marginal farmer families.',
+    description_hi:
+      'छोटे और सीमांत किसान परिवारों को तीन समान किश्तों में ₹6,000 प्रति वर्ष की प्रत्यक्ष आय सहायता।',
+    ministry_en: 'Ministry of Agriculture & Farmers Welfare',
+    ministry_hi: 'कृषि एवं किसान कल्याण मंत्रालय',
+    category: 'agriculture',
+    state: 'All India',
+    workType: 'agriculture',
+    industrySector: 'agriculture_farming',
+    skillLevel: 'any',
+    demographic: 'rural',
+    socioEconomic: 'low_income',
+    employmentStatus: 'self_employed',
+    eligibilityCriteria: [
+      { en: 'Land-holding farmer family with up to 2 hectares of land', hi: '2 हेक्टेयर तक भूमि वाला किसान परिवार' },
+      { en: 'Land holding name in land records', hi: 'भूमि रिकॉर्ड में भूमिधारक का नाम' },
+      { en: 'Not an income tax payer', hi: 'आयकर दाता नहीं' },
+    ],
+    benefits: [
+      { en: '₹6,000/year in 3 instalments of ₹2,000 each', hi: '₹2,000 की 3 किश्तों में ₹6,000/वर्ष' },
+      { en: 'Direct bank transfer every 4 months', hi: 'हर 4 महीने में सीधे बैंक हस्तांतरण' },
+    ],
+    documentsRequired: [
+      { en: 'Aadhaar Card', hi: 'आधार कार्ड' },
+      { en: 'Land ownership documents / Khatoni', hi: 'भूमि स्वामित्व दस्तावेज़ / खतौनी' },
+      { en: 'Bank Account with IFSC (linked to Aadhaar)', hi: 'IFSC के साथ बैंक खाता (आधार से जुड़ा)' },
+    ],
+    applicationSteps: [
+      { step: 1, en: 'Visit pmkisan.gov.in or nearest CSC', hi: 'pmkisan.gov.in पर जाएं या नजदीकी CSC पर जाएं' },
+      { step: 2, en: 'Click "New Farmer Registration" and enter Aadhaar', hi: '"नया किसान पंजीकरण" पर क्लिक करें और आधार दर्ज करें' },
+      { step: 3, en: 'Enter state, district, bank account and land details', hi: 'राज्य, जिला, बैंक खाता और भूमि विवरण दर्ज करें' },
+      { step: 4, en: 'Submit and verify OTP', hi: 'सबमिट करें और OTP सत्यापित करें' },
+      { step: 5, en: 'Wait for state verification — ₹2,000 credited in next cycle', hi: 'राज्य सत्यापन की प्रतीक्षा करें — ₹2,000 अगले चक्र में जमा' },
+    ],
+    officialLink: 'https://pmkisan.gov.in',
+    portalName: 'PM-KISAN Portal',
+    youtubeVideoId: 'GiRFxKRCWqE',
+    youtubeTitle_en: 'PM KISAN Registration 2024 — Get ₹6,000 Every Year',
+    youtubeTitle_hi: 'PM किसान पंजीकरण 2024 — हर साल ₹6,000 पाएं',
+    tags: ['farmer', 'agriculture', 'income support', '₹6000', 'direct benefit', 'PM-KISAN'],
+    isActive: true,
+    isFeatured: false,
+  },
+  /**
+ * schemeSeedDataExtra.js
+ * 20 additional schemes — 2 per category.
+ * Merge with schemeSeedData.js in seedSchemes.js.
+ *
+ * logoUrl uses Google's stable S2 favicon service:
+ *   https://www.google.com/s2/favicons?domain=DOMAIN&sz=128
+ * This returns the official government portal favicon, giving authenticity.
+ */
+
+
+];
+
+module.exports = schemes;
+
