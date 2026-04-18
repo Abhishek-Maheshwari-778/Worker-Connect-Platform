@@ -26,7 +26,7 @@ git remote add origin https://github.com/Abhishek-Maheshwari-778/Worker-Connect-
 :: Add and commit
 echo Staging and Committing...
 git add .
-git commit -m "Initial commit for Worker Connect Platform"
+git commit -m "Update MongoDB Atlas connection and unify Vercel deployment"
 
 :: Push
 echo.
