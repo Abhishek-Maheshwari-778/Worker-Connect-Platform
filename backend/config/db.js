@@ -32,8 +32,8 @@ const connectDB = async () => {
         return connect();
       }
 
-      console.error('💀  Max retries reached. Shutting down.');
-      process.exit(1);
+      console.error('💀  Max retries reached.');
+      throw error;
     }
   };
 
