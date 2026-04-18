@@ -28,7 +28,7 @@ module.exports = async (req, res) => {
       success: false, 
       message: 'Serverless Entry Error', 
       error: error.message,
-      details: process.env.NODE_ENV === 'development' ? error.stack : undefined
+      details: error.stack // Temporarily show stack even in production for debugging
     });
   }
 };
