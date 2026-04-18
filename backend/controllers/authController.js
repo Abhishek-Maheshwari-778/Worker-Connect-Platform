@@ -239,7 +239,8 @@ const checkEmail = asyncHandler(async (req, res) => {
     return res.status(200).json({ success: true, roles: [] });
   }
 
-  const users = await User.find({ email }).select('role name avatar');
+  const cleanEmail = email.toLowerCase().trim();
+  const users = await User.find({ email: cleanEmail }).select('role name avatar');
   const roles = users.map(u => ({
     role:   u.role,
     name:   u.name,
