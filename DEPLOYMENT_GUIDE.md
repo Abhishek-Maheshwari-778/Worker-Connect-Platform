@@ -1,37 +1,43 @@
 # 🚀 Unified Deployment Guide: Worker Connect (MERN)
 
-This guide explains how to deploy both the **Frontend** and **Backend** as a single, unified project on **Vercel**. This setup uses Vercel Serverless Functions to handle the API and Vite for the frontend.
+This guide explains how to deploy both the **Frontend** and **Backend** as a single, unified project on **Netlify** or **Vercel**.
 
 ---
 
 ## 1. 🗄️ Database Setup (MongoDB Atlas)
 1.  Sign up at [mongodb.com](https://www.mongodb.com/cloud/atlas).
 2.  Create a **Free Cluster**.
-3.  In **Network Access**, click "Add IP Address" and select **Allow Access from Anywhere (0.0.0.0/0)**. (This is required because Vercel IPs change).
+3.  In **Network Access**, click "Add IP Address" and select **Allow Access from Anywhere (0.0.0.0/0)**.
 4.  In **Database Access**, create a user with a username and password.
 5.  Click **Connect** -> **Drivers** -> Copy your Connection String.
-    - Example: `mongodb+srv://<username>:<password>@cluster0.xxx.mongodb.net/labour_connect`
 
 ---
 
-## 2. 🌐 Deploying to Vercel (All-in-One)
-1.  **Push your code to GitHub**: Ensure your project has the `vercel.json` and `api/index.js` I created in the root.
+## 2. 🌌 Deploying to Netlify (Recommended)
+1.  **Push your code to GitHub**: Ensure your project has the `netlify.toml` and `functions/api.js` in the root.
+2.  **Import to Netlify**:
+    - Go to [Netlify.com](https://netlify.com), click **"Add new site" -> "Import an existing project"**.
+    - Connect to your GitHub and select the repository.
+3.  **Site Settings**:
+    - **Build command**: `npm run build-frontend`
+    - **Publish directory**: `frontend/dist`
+    - **Functions directory**: `functions`
+4.  **Environment Variables**:
+    - Add variables in **Site settings -> Environment variables**:
+        - `MONGO_URI`, `JWT_SECRET`, `NODE_ENV` (production), `CLOUDINARY_*`
+5.  **Deploy**: Netlify will automatically build your frontend and serve the backend via Edge Functions!
+
+---
+
+## 3. 🌐 Deploying to Vercel
+1.  **Push your code to GitHub**: Ensure your project has the `vercel.json` and `api/index.js` in the root.
 2.  **Import to Vercel**:
     - Go to [Vercel.com](https://vercel.com) and click **"Add New" -> "Project"**.
-    - Import your GitHub repository.
 3.  **Configure Project Settings**:
-    - **Framework Preset**: Other (Vercel will detect configuration from `vercel.json`).
-    - **Root Directory**: `.` (Keep as root).
+    - **Framework Preset**: Other.
 4.  **Environment Variables**:
-    - Add the following variables in the Vercel Dashboard:
-        - `MONGO_URI`: (Your Atlas connection string)
-        - `JWT_SECRET`: (A random strong string)
-        - `NODE_ENV`: `production`
-        - `CLIENT_URL`: `https://your-project-name.vercel.app`
-        - `CLOUDINARY_CLOUD_NAME`: (Your Cloudinary name)
-        - `CLOUDINARY_API_KEY`: (Your Cloudinary key)
-        - `CLOUDINARY_API_SECRET`: (Your Cloudinary secret)
-5.  **Deploy**: Click **Deploy**. Vercel will build your React frontend and set up your Node.js API automatically!
+    - Add the same variables as above in the Vercel Dashboard.
+5.  **Deploy**: Vercel will set up your unified app automatically!
 
 ---
 
