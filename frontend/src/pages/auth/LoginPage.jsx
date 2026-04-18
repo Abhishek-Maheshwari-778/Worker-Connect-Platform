@@ -360,7 +360,7 @@ const LoginPage = () => {
                   {error && (
                     <div className="flex items-start gap-2.5 px-4 py-3 rounded-xl bg-red-50 border border-red-200 text-sm text-red-700">
                       <span className="text-red-500 mt-0.5 flex-shrink-0">✕</span>
-                      {error}
+                      {typeof error === 'string' ? error : (error?.message || JSON.stringify(error))}
                     </div>
                   )}
 
@@ -436,7 +436,7 @@ const LoginPage = () => {
                   {error && (
                     <div className="flex items-start gap-2.5 px-4 py-3 rounded-xl bg-red-50 border border-red-200 text-sm text-red-700 au-bounce-in">
                       <span className="text-red-500 mt-0.5 flex-shrink-0">✕</span>
-                      <span>{error}</span>
+                      <span>{typeof error === 'string' ? error : (error?.message || JSON.stringify(error))}</span>
                     </div>
                   )}
 

@@ -77,7 +77,7 @@ export const Alert = ({ type = 'info', message, className = '' }) => {
   return (
     <div className={`flex items-start gap-2.5 px-4 py-3 rounded-xl border text-sm ${styles[type]} ${className}`}>
       <AlertCircle className="w-4 h-4 mt-0.5 flex-shrink-0" />
-      <span>{message}</span>
+      <span>{typeof message === 'string' ? message : (message?.message || JSON.stringify(message))}</span>
     </div>
   );
 };
