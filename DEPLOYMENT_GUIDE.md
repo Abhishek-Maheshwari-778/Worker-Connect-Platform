@@ -44,16 +44,30 @@ Vercel's serverless architecture is not designed for permanent WebSockets.
 ---
 
 ## 🏗️ Seeding Your Database
-To fill your new online database with dummy data (Users, Jobs, Schemes):
+To fill your new online database with extensive dummy data (Users, Jobs, Disputes, Chats, etc):
 1.  Clone your project locally.
 2.  Update your local `backend/.env` with the new Atlas `MONGO_URI`.
-3.  Run these commands in your terminal:
+3.  Run the extensive seed script in your terminal:
     ```bash
-    node backend/data/seedUsers.js
-    node backend/data/seedSchemes.js
+    node backend/data/seedExtensive.js
     ```
 
 ---
 
-**Need help?** Just ask, and I can help you debug your Vercel logs or Atlas connection!
+## 4. 🔀 Committing and Pushing to GitHub
+1. Stage your changes:
+   ```bash
+   git add .
+   ```
+2. Commit your changes:
+   ```bash
+   git commit -m "chore: remove unused files and prepare for Vercel deployment"
+   ```
+3. Push to your repository:
+   ```bash
+   git push origin main
+   ```
 
+---
+
+**Need help?** Just ask, and I can help you debug your Vercel logs or Atlas connection!
