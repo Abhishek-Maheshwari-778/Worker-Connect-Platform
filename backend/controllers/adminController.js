@@ -1306,6 +1306,49 @@ const createEmployee = asyncHandler(async (req, res) => {
   successResponse(res, 201, 'Employee created successfully', employee);
 });
 
+// @desc    Assign an employee (mediator) to a client or worker
+// @route   PUT /api/admin/users/:userId/assign-mediator
+// @access  Private (Admin)
+const assignEmployeeToUser = asyncHandler(async (req, res) => {
+  const { userId } = req.params;
+  const { employeeId } = req.body;
+
+  const user = await User.findById(userId);
+  if (!user) throw new Error('User not found');
+
+  const employee = await User.findById(employeeId);
+  if (!employee || employee.role !== 'employee') {
+    throw new Error('Valid employee not found');
+  }
+
+  if (user.role === 'labour') {
+    let profile = await LabourProfile.findOne({ user: userId });
+    if (!profile) profile = await LabourProfile.create({ user: userId });
+    profile.assignedEmployee = employeeId;
+    await profile.save();
+  } else if (user.role === 'client') {
+    let profile = await ClientProfile.findOne({ user: userId });
+    if (!profile) profile = await ClientProfile.create({ user: userId });
+    profile.assignedEmployee = employeeId;
+    await profile.save();
+  } else {
+    throw new Error('Mediators can only be assigned to Clients or Workers');
+  }
+
+  await auditService.log({
+    adminId:    req.user._id,
+    adminName:  req.user.name,
+    action:     'user_assigned',
+    description:`Assigned ${user.name} to mediator ${employee.name}`,
+    targetType: 'User',
+    targetId:   user._id,
+    targetName: user.name,
+    ipAddress:  req.ip,
+  });
+
+  successResponse(res, 200, `Successfully assigned ${user.name} to ${employee.name}`);
+});
+
 module.exports = {
   getAllEmployees,
   createEmployee,

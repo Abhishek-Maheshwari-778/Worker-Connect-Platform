@@ -26,6 +26,7 @@ const {
   getVerificationSLA,
   getAllEmployees,
   createEmployee,
+  assignEmployeeToUser,
 } = require('../controllers/adminController');
 const { protect, authorize } = require('../middleware/authMiddleware');
 

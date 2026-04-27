@@ -3,7 +3,7 @@ const User = require('../models/userModel');
 const LabourProfile = require('../models/labourProfileModel');
 const ClientProfile = require('../models/clientProfileModel');
 const Job = require('../models/jobModel');
-const { successResponse } = require('../utils/responseUtils');
+const { successResponse } = require('../utils/apiResponse');
 
 // @desc    Get employee dashboard stats
 // @route   GET /api/employee/stats
