@@ -218,10 +218,10 @@ const LoginPage = () => {
     try {
       await login({ email, password, role });
       queryClient.clear();
-      const roleLabel = role === 'admin' ? 'Admin' : role === 'labour' ? 'Worker' : 'Client';
+      const roleLabel = role === 'admin' ? 'Admin' : role === 'employee' ? 'Employee' : role === 'labour' ? 'Worker' : 'Client';
       toast.success(`Welcome back! Redirecting to ${roleLabel} dashboard…`, { duration: 2500 });
       // Role-based redirect
-      const dest = role === 'labour' ? '/labour' : role === 'client' ? '/client' : '/admin';
+      const dest = role === 'labour' ? '/labour' : role === 'client' ? '/client' : role === 'employee' ? '/employee' : '/admin';
       navigate(dest, { replace: true });
     } catch (err) {
       setError(err.message || 'Login failed. Please check your credentials.');
@@ -566,6 +566,7 @@ const LoginPage = () => {
                         <LogIn className="w-4 h-4" />
                         {isAdmin
                           ? 'Sign in as Admin'
+                          : isEmployee ? 'Sign in as Employee'
                           : role === 'labour' ? 'Sign in as Worker'
                           : role === 'client' ? 'Sign in as Client'
                           : 'Select a role to continue'
