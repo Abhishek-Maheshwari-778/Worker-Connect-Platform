@@ -1,16 +1,16 @@
 const mongoose = require('mongoose');
-require('dotenv').config({ path: './backend/.env' });
+require('dotenv').config();
 
-const User = require('./backend/models/userModel');
-const Job = require('./backend/models/jobModel');
-const LabourProfile = require('./backend/models/labourProfileModel');
-const ClientProfile = require('./backend/models/clientProfileModel');
+const User = require('./models/userModel');
+const Job = require('./models/jobModel');
+const LabourProfile = require('./models/labourProfileModel');
+const ClientProfile = require('./models/clientProfileModel');
 
 async function check() {
   try {
     await mongoose.connect(process.env.MONGO_URI);
     const employee = await User.findOne({ email: 'employee1@labourconnect.in' });
-    console.log('--- DB TRACE ---');
+    console.log('--- DB TRACE (BACKEND DIR) ---');
     console.log('Employee Found:', employee ? 'YES' : 'NO');
     if (employee) {
       console.log('ID:', employee._id);

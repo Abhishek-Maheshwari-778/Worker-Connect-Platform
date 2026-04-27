@@ -110,7 +110,7 @@ const EmployeeJobsPage = () => {
                   Manage Workers ({job.applicants?.length || 0})
                 </button>
 
-                {job.status === 'pending' && (
+                {(job.status === 'open' || job.status === 'pending') && (
                   <button 
                     onClick={() => handleUpdateStatus(job._id, 'in_progress')}
                     className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-xl text-sm font-bold hover:bg-blue-700 transition-colors"
@@ -128,7 +128,7 @@ const EmployeeJobsPage = () => {
                   </button>
                 )}
 
-                {(job.status === 'pending' || job.status === 'in_progress') && (
+                {(job.status === 'open' || job.status === 'pending' || job.status === 'in_progress') && (
                   <button 
                     onClick={() => handleUpdateStatus(job._id, 'cancelled')}
                     className="flex items-center gap-2 px-4 py-2 bg-red-50 text-red-600 rounded-xl text-sm font-bold hover:bg-red-100 transition-colors"

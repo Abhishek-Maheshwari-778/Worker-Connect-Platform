@@ -82,22 +82,22 @@ const seedEverything = async () => {
         
         console.log(`  + Created Client: ${client.email} | Assigned to: ${mediator.email}`);
 
-        // Create 3 Jobs for each client
-        const categories = ['painting', 'electrical', 'plumbing', 'carpentry', 'security', 'moving', 'cooking'];
-        for (let j = 0; j < 3; j++) {
-          const status = j === 0 ? 'open' : (j === 1 ? 'in_progress' : 'completed');
+        // Create 10 Jobs for each client (Total 30 per area)
+        const categories = ['construction', 'electrical', 'plumbing', 'painting', 'carpentry', 'welding', 'cleaning', 'gardening', 'moving', 'security'];
+        for (let j = 0; j < 10; j++) {
+          const status = j % 3 === 0 ? 'open' : (j % 3 === 1 ? 'in_progress' : 'completed');
           const job = await Job.create({
-            title: `${categories[Math.floor(Math.random()*categories.length)]} needed in ${city}`,
-            description: `Professional services required for a project in ${city}. Mediator managed project.`,
-            category: categories[Math.floor(Math.random()*categories.length)],
-            budgetMin: 3000 + (j * 1000),
-            budgetMax: 6000 + (j * 1000),
+            title: `${categories[j % categories.length].charAt(0).toUpperCase() + categories[j % categories.length].slice(1)} needed in ${city}`,
+            description: `Professional ${categories[j % categories.length]} services required for a medium-scale project in ${city}. The project is fully managed by our area mediator to ensure quality and timely payment.`,
+            category: categories[j % categories.length],
+            budgetMin: 2000 + (j * 500),
+            budgetMax: 5000 + (j * 500),
             budgetType: 'fixed',
             totalLabourNeeded: 1,
             location: {
               type: 'Point',
               coordinates: [0, 0],
-              address: `${['Main Road', 'Sector 5', 'Old City'][j]}, ${city}`,
+              address: `${['Main Road', 'Sector 5', 'Old City', 'Green Park', 'Industrial Area'][j % 5]}, ${city}`,
               city,
               state: mediator.location.state
             },
@@ -109,13 +109,12 @@ const seedEverything = async () => {
           });
 
           if (status === 'open') {
-            // Find a worker in the same city to apply
             const worker = await User.findOne({ role: 'labour', 'location.city': city });
             if (worker) {
               job.applicants.push({
                 labour: worker._id,
                 status: 'applied',
-                proposalMsg: "Ready to work!"
+                proposalMsg: "Ready to work! I have experience in this category."
               });
               await job.save();
             }
