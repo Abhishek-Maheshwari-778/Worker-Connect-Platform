@@ -72,7 +72,7 @@ const seedEverything = async () => {
           location: { city, state: mediator.location.state }
         });
 
-        const profile = await ClientProfile.create({
+        const clientProfile = await ClientProfile.create({
           user: client._id,
           companyName: `${city} ${['Enterprises', 'Builders', 'Solutions'][i-1]}`,
           assignedEmployee: mediatorId,
@@ -81,6 +81,25 @@ const seedEverything = async () => {
         });
         
         console.log(`  + Created Client: ${client.email} | Assigned to: ${mediator.email}`);
+
+        // --- ADDED: Seed Client-Mediator Chat ---
+        const clientConv = await Conversation.create({
+          participants: [mediatorId, client._id],
+          type: 'direct'
+        });
+        const clientMsgs = [
+          { sender: client._id, content: `Hello, I am ${client.name}. I need to hire some workers for my new project in ${city}.` },
+          { sender: mediatorId, content: `Hi ${client.name}, I'm your assigned mediator. I can certainly help you with that. I'll check my portfolio of verified workers.` },
+          { sender: client._id, content: `Great! I've already posted some jobs. Please let me know when you find someone suitable.` }
+        ];
+        for (const msg of clientMsgs) {
+          await Message.create({
+            conversation: clientConv._id,
+            sender: msg.sender,
+            content: msg.content,
+            readBy: [{ user: (msg.sender.toString() === mediatorId.toString() ? client._id : mediatorId) }]
+          });
+        }
 
         // Create 10 Jobs for each client (Total 30 per area)
         const categories = ['construction', 'electrical', 'plumbing', 'painting', 'carpentry', 'welding', 'cleaning', 'gardening', 'moving', 'security'];
@@ -143,18 +162,20 @@ const seedEverything = async () => {
 
         console.log(`  + Created Worker: ${worker.email} | Assigned to: ${mediator.email}`);
 
-        // Seed Chat History
-        const conv = await Conversation.create({
+        // Seed Worker-Mediator Chat History
+        const workerConv = await Conversation.create({
           participants: [mediatorId, worker._id],
           type: 'direct'
         });
-        const messages = [
-          { sender: mediatorId, content: `Hi ${worker.name}, I am your mediator. Are you looking for work?` },
-          { sender: worker._id, content: `Yes sir, I am available for ${city} area.` }
+        const workerMsgs = [
+          { sender: mediatorId, content: `Hi ${worker.name}, I am your mediator for the ${city} area. I've added you to my portfolio.` },
+          { sender: worker._id, content: `Thank you sir. Please let me know if there are any jobs available for me.` },
+          { sender: mediatorId, content: `Sure, just make sure your profile is updated with your latest skills.` },
+          { sender: worker._id, content: `Yes sir, I've already added my experience in ${['Masonry', 'Plumbing', 'Cleaning', 'Security', 'Welding'][i-1]}.` }
         ];
-        for (const msg of messages) {
+        for (const msg of workerMsgs) {
           await Message.create({
-            conversation: conv._id,
+            conversation: workerConv._id,
             sender: msg.sender,
             content: msg.content,
             readBy: [{ user: (msg.sender.toString() === mediatorId.toString() ? worker._id : mediatorId) }]
