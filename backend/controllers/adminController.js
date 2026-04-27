@@ -1209,10 +1209,107 @@ const deleteFlaggedRating = asyncHandler(async (req, res) => {
     ipAddress:  req.ip,
   });
 
-  res.json({ success: true, message: 'Flagged rating deleted' });
+// ─── @desc   Assign an employee to a user
+// ─── @route  PUT /api/admin/users/:userId/assign-employee
+// ─── @access Private (admin)
+const assignEmployeeToUser = asyncHandler(async (req, res) => {
+  const { employeeId } = req.body;
+  const user = await User.findById(req.params.userId);
+
+  if (!user) {
+    res.status(404);
+    throw new Error('User not found');
+  }
+
+  if (user.role === 'labour') {
+    const profile = await LabourProfile.findOne({ user: user._id });
+    if (profile) {
+      profile.assignedEmployee = employeeId;
+      await profile.save();
+    }
+  } else if (user.role === 'client') {
+    const profile = await ClientProfile.findOne({ user: user._id });
+    if (profile) {
+      profile.assignedEmployee = employeeId;
+      await profile.save();
+    }
+  } else {
+    res.status(400);
+    throw new Error('Can only assign employees to clients or labour');
+  }
+
+  const employee = await User.findById(employeeId);
+
+  await auditService.log({
+    adminId:    req.user._id,
+    adminName:  req.user.name,
+    action:     'user_updated',
+    description:`Assigned employee "${employee?.name || 'Unknown'}" to user "${user.name}"`,
+    targetType: 'User',
+    targetId:   user._id,
+    targetName: user.name,
+    metadata:   { employeeId, employeeName: employee?.name },
+    ipAddress:  req.ip,
+  });
+
+  successResponse(res, 200, 'Employee assigned successfully');
+});
+
+res.json({ success: true, message: 'Flagged rating deleted' });
+});
+
+// ─── @desc   Get all employees
+// ─── @route  GET /api/admin/employees
+// ─── @access Private (admin)
+const getAllEmployees = asyncHandler(async (req, res) => {
+  const employees = await User.find({ role: 'employee' })
+    .select('-password')
+    .sort({ createdAt: -1 });
+  
+  successResponse(res, 200, 'Employees fetched', employees);
+});
+
+// ─── @desc   Create a new employee
+// ─── @route  POST /api/admin/employees
+// ─── @access Private (admin)
+const createEmployee = asyncHandler(async (req, res) => {
+  const { name, email, phone, password, location } = req.body;
+
+  const existing = await User.findOne({ email });
+  if (existing) {
+    res.status(400);
+    throw new Error('Email is already registered');
+  }
+
+  const employee = await User.create({
+    name,
+    email,
+    phone,
+    password,
+    role: 'employee',
+    isVerified: true,
+    isProfileComplete: true,
+    location
+  });
+
+  await auditService.log({
+    adminId:    req.user._id,
+    adminName:  req.user.name,
+    action:     'user_created',
+    description:`Created new employee account: ${name} (${email})`,
+    targetType: 'User',
+    targetId:   employee._id,
+    targetName: employee.name,
+    ipAddress:  req.ip,
+  });
+
+  successResponse(res, 201, 'Employee created successfully', employee);
 });
 
 module.exports = {
+  getAllEmployees,
+  createEmployee,
+  assignEmployeeToUser,
   getDashboardStats,
   getAllUsers,
   toggleUserSuspension,

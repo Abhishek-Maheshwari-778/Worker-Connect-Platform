@@ -340,31 +340,64 @@ const JobDetailPage = () => {
                 <p className="text-sm text-slate-500 dark:text-slate-400 mt-1 capitalize">{job.category?.replace(/_/g,' ')}</p>
               </div>
               <div className="flex items-center gap-2.5 flex-shrink-0">
-                <Avatar src={job.postedBy?.avatar?.url} name={job.postedBy?.name} size="md" />
-                <div>
-                  <p className="text-sm font-semibold text-slate-800 dark:text-slate-100">{job.postedBy?.name}</p>
-                  <p className="text-xs text-slate-500 dark:text-slate-400">Client</p>
-                </div>
+                {/* Show Mediator for Labour, Client for others */}
+                {isLabour && job.postedBy?.clientProfile?.assignedEmployee ? (
+                  <>
+                    <Avatar 
+                      src={job.postedBy.clientProfile.assignedEmployee.avatar?.url} 
+                      name={job.postedBy.clientProfile.assignedEmployee.name} 
+                      size="md" 
+                    />
+                    <div>
+                      <p className="text-sm font-semibold text-slate-800 dark:text-slate-100">
+                        {job.postedBy.clientProfile.assignedEmployee.name}
+                      </p>
+                      <p className="text-xs text-slate-500 dark:text-slate-400">Mediator (Assigned to you)</p>
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <Avatar src={job.postedBy?.avatar?.url} name={job.postedBy?.name} size="md" />
+                    <div>
+                      <p className="text-sm font-semibold text-slate-800 dark:text-slate-100">{job.postedBy?.name}</p>
+                      <p className="text-xs text-slate-500 dark:text-slate-400">Client</p>
+                    </div>
+                  </>
+                )}
               </div>
             </div>
-            <div className="flex items-center gap-2.5 flex-shrink-0">
-  <Avatar src={job.postedBy?.avatar?.url} name={job.postedBy?.name} size="md" />
-  <div>
-    <p className="text-sm font-semibold text-slate-800 dark:text-slate-100">{job.postedBy?.name}</p>
-    <p className="text-xs text-slate-500 dark:text-slate-400">Client</p>
-  </div>
 
-  {/* ✅ NEW: View Client Profile Button */}
-  {isLabour && job.postedBy?._id && (
-    <Link 
-      to={`/client/${job.postedBy._id}`}
-      className="ml-2 flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-blue-50 text-blue-600 text-xs font-semibold hover:bg-blue-100 transition-colors border border-blue-200"
-    >
-      <Building2 className="w-3.5 h-3.5" />
-      View Profile
-    </Link>
-  )}
-</div>
+            <div className="flex items-center gap-2.5 flex-shrink-0">
+              {/* Only show Client Profile link to Admin or Client themselves */}
+              {(user?.role === 'admin' || isOwner) && (
+                <Link 
+                  to={`/client/${job.postedBy._id}`}
+                  className="ml-2 flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-blue-50 text-blue-600 text-xs font-semibold hover:bg-blue-100 transition-colors border border-blue-200"
+                >
+                  <Building2 className="w-3.5 h-3.5" />
+                  View Client Profile
+                </Link>
+              )}
+            </div>
+
+{/* Mediator Banner */}
+{job.postedBy?.clientProfile?.assignedEmployee && (
+  <div className="bg-gradient-to-r from-orange-50 to-amber-50 border border-orange-200 rounded-2xl p-4 flex items-center justify-between mb-4 animate-fade-in">
+    <div className="flex items-center gap-3">
+      <div className="w-10 h-10 rounded-xl bg-orange-100 flex items-center justify-center text-orange-600">
+        <Shield className="w-5 h-5" />
+      </div>
+      <div>
+        <p className="text-xs text-orange-800 font-bold uppercase tracking-wider">Mediation Managed</p>
+        <p className="text-sm text-slate-700">This job is managed by <strong>{job.postedBy.clientProfile.assignedEmployee.name}</strong></p>
+      </div>
+    </div>
+    <div className="hidden sm:block text-right">
+      <p className="text-[10px] text-slate-400 font-medium">Mediator ID</p>
+      <p className="text-xs font-mono text-slate-600">#{job.postedBy.clientProfile.assignedEmployee._id.slice(-6).toUpperCase()}</p>
+    </div>
+  </div>
+)}
 
             {/* Meta grid */}
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">

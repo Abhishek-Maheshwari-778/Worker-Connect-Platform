@@ -15,6 +15,7 @@ const adminNav = [
   { to: '/admin/analytics',     icon: BarChart2,     label: 'Analytics'         },
   { divider: true, key: 'mgmt', label: 'Management' },
   { to: '/admin/users',         icon: Users,         label: 'User Management'   },
+  { to: '/admin/employees',     icon: Shield,        label: 'Employees'         },
   { to: '/admin/verifications', icon: ShieldCheck,   label: 'Verifications'     },
   { to: '/admin/jobs',          icon: Briefcase,     label: 'All Jobs'          },
   { to: '/admin/schemes',       icon: BookOpen,      label: 'Govt. Schemes'     },

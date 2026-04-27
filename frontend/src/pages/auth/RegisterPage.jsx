@@ -412,7 +412,7 @@ const RegisterPage = () => {
         phone: form.phone.trim() || undefined,
         dob: form.dob || undefined,
       });
-      toast.success('Account created! Welcome to Labour Connect 🎉');
+      toast.success('Account created! Welcome to LabourConnect ["ShramSetu Bharat"] 🎉');
       navigate('/dashboard');
     } catch (err) {
       setError(err.response?.data?.message || err.message || 'Registration failed. Please try again.');
@@ -441,7 +441,7 @@ const RegisterPage = () => {
             <span className="text-white font-display font-bold">LC</span>
           </span>
           <span className="font-display font-bold text-slate-900 text-xl">
-            Labour<span className="text-accent">Connect</span>
+            Labour<span className="text-accent">Connect</span> <span className="text-[10px] opacity-60 font-medium ml-1 tracking-tight italic">["ShramSetu Bharat"]</span>
           </span>
         </div>
 

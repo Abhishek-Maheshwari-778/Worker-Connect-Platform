@@ -8,6 +8,10 @@ const clientProfileSchema = new mongoose.Schema(
       required: true,
       unique:   true,
     },
+    assignedEmployee: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref:  'User',
+    },
 
     // ── Business Info ─────────────────────────────────────────────────────────
     companyName:  { type: String, trim: true, default: '' },

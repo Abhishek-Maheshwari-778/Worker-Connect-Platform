@@ -275,9 +275,8 @@ export default function LandingPage() {
 
             {/* Headline */}
             <h1 className="font-display text-5xl sm:text-6xl lg:text-7xl font-bold text-white leading-tight mb-6 animate-fadeUp">
-              A single platform for{' '}
-              <span className="gradient-text">all your hiring</span>{' '}
-              needs
+              LabourConnect<br/>
+              <span className="gradient-text">["ShramSetu Bharat"]</span>
             </h1>
 
             <p className="text-lg sm:text-xl text-blue-100/80 max-w-3xl mx-auto leading-relaxed mb-10 animate-fadeUp stagger-2">

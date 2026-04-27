@@ -21,6 +21,8 @@ const AdminUsersPage = () => {
   const [confirmDel,    setConfirmDel]    = useState(null);
   const [suspendModal,  setSuspendModal]  = useState(null);
   const [suspendReason, setSuspendReason] = useState('');
+  const [assignModal,   setAssignModal]   = useState(null);
+  const [selectedEmp,   setSelectedEmp]   = useState('');
 
   const dSearch = useDebounce(search, 400);
 
@@ -34,6 +36,12 @@ const AdminUsersPage = () => {
     }).then(r => r.data),
     keepPreviousData: true,
   });
+  
+  const { data: employeesData } = useQuery({
+    queryKey: ['admin-employees'],
+    queryFn:  () => adminService.getEmployees().then(r => r.data),
+  });
+  const employees = employeesData?.data || [];
 
   const users      = data?.data            || [];
   const totalPages = data?.meta?.totalPages || 1;
@@ -58,6 +66,17 @@ const AdminUsersPage = () => {
       setConfirmDel(null);
     },
     onError: (err) => toast.error(err.message),
+  });
+
+  const assignMutation = useMutation({
+    mutationFn: ({ userId, empId }) => adminService.assignEmployee(userId, empId),
+    onSuccess: () => {
+      qc.invalidateQueries(['admin-users']);
+      toast.success('Mediator assigned successfully');
+      setAssignModal(null);
+      setSelectedEmp('');
+    },
+    onError: (err) => toast.error(err.response?.data?.message || 'Assignment failed'),
   });
 
   const handleSuspendClick = (user) => {
@@ -174,6 +193,15 @@ const AdminUsersPage = () => {
                             : <ShieldOff className="w-4 h-4" />
                           }
                         </button>
+                        {(user.role === 'labour' || user.role === 'client') && (
+                          <button
+                            onClick={() => setAssignModal(user)}
+                            title="Assign Mediator"
+                            className="btn-icon btn text-indigo-600 hover:bg-indigo-50"
+                          >
+                            <Shield className="w-4 h-4" />
+                          </button>
+                        )}
                         <button
                           onClick={() => setConfirmDel(user)}
                           title="Delete user"
@@ -327,6 +355,52 @@ const AdminUsersPage = () => {
                   )}
                 </button>
               </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* ── Assign Employee Modal ───────────────────────────────────────────── */}
+      {assignModal && (
+        <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4 backdrop-blur-sm">
+          <div className="bg-white w-full max-w-md rounded-3xl shadow-float p-8 space-y-6 animate-in fade-in zoom-in duration-200">
+            <div className="flex items-center gap-4">
+              <div className="w-12 h-12 rounded-2xl bg-indigo-50 flex items-center justify-center">
+                <Shield className="w-6 h-6 text-indigo-600" />
+              </div>
+              <div>
+                <h3 className="text-xl font-bold text-slate-900">Assign Mediator</h3>
+                <p className="text-sm text-slate-500">For {assignModal.name}</p>
+              </div>
+            </div>
+
+            <div>
+              <label className="block text-sm font-semibold text-slate-700 mb-2">Select Employee</label>
+              <select 
+                className="input w-full"
+                value={selectedEmp}
+                onChange={e => setSelectedEmp(e.target.value)}
+              >
+                <option value="">Choose an employee...</option>
+                {employees.map(emp => (
+                  <option key={emp._id} value={emp._id}>
+                    {emp.name} ({emp.location?.city || 'No Area'})
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <div className="flex gap-3 pt-2">
+              <button onClick={() => setAssignModal(null)} className="btn-outline btn flex-1 py-2.5 rounded-xl">
+                Cancel
+              </button>
+              <button
+                onClick={() => assignMutation.mutate({ userId: assignModal._id, empId: selectedEmp })}
+                disabled={assignMutation.isPending || !selectedEmp}
+                className="btn-primary btn flex-1 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold transition-all shadow-lg shadow-indigo-100 disabled:opacity-50"
+              >
+                {assignMutation.isPending ? 'Assigning...' : 'Assign Now'}
+              </button>
             </div>
           </div>
         </div>

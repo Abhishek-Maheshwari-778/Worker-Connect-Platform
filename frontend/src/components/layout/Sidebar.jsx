@@ -30,8 +30,9 @@ const Sidebar = ({ navItems, open, onClose }) => {
             <span className="w-7 h-7 rounded-lg bg-primary flex items-center justify-center">
               <span className="text-white font-bold text-xs">LC</span>
             </span>
-            <span className="font-display font-bold text-slate-900">
-              Labour<span className="text-accent">Connect</span>
+            <span className="font-display font-bold text-slate-900 text-sm">
+              Labour<span className="text-accent">Connect</span><br/>
+              <span className="text-[10px] opacity-60 font-medium tracking-tight">["ShramSetu Bharat"]</span>
             </span>
           </div>
           <button className="btn-ghost btn-icon lg:hidden" onClick={onClose}>
@@ -79,7 +80,7 @@ const Sidebar = ({ navItems, open, onClose }) => {
 
         {/* ── Footer ── */}
         <div className="px-4 py-3 border-t border-surface-100">
-          <p className="text-[11px] text-slate-400 text-center">Labour Connect v1.0</p>
+          <p className="text-[11px] text-slate-400 text-center">LabourConnect ["ShramSetu Bharat"] v1.0</p>
         </div>
       </aside>
     </>

@@ -61,6 +61,7 @@ const labourProfileSchema = new mongoose.Schema({
   workingRadius:       { type: Number, default: 20, min: 1, max: 500 },
   availableFrom:       { type: Date },
   isAvailable:         { type: Boolean, default: true },
+  assignedEmployee:    { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
   skills:              [skillSchema],
   preferredCategories: [{ type: String, trim: true }],
   languages:           [{ type: String, trim: true }],

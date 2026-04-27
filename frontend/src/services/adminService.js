@@ -28,6 +28,10 @@ const adminService = {
   // Verification SLA
   getVerificationSLA:   (params)        => api.get('/admin/verification-sla', { params }),
   getAuditSummary:      ()              => api.get('/admin/audit-summary'),
+  // Employee Management
+  getEmployees:         ()              => api.get('/admin/employees'),
+  createEmployee:       (data)          => api.post('/admin/employees', data),
+  assignEmployee:       (userId, empId) => api.put(`/admin/users/${userId}/assign-employee`, { employeeId: empId }),
 };
 
 export default adminService;

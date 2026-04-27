@@ -150,6 +150,7 @@ const LoginPage = () => {
   const [error,     setError]     = useState('');
   const [existRoles,setExistRoles]= useState([]); // roles found for this email
   const [isAdmin,   setIsAdmin]   = useState(false); // true when admin email detected
+  const [isEmployee, setIsEmployee] = useState(false); // true when employee email detected
   const [testIdx,   setTestIdx]   = useState(0);
 
   const emailRef    = useRef(null);
@@ -175,22 +176,31 @@ const LoginPage = () => {
       const roles = res.data.roles || [];
       setExistRoles(roles);
 
-      // ── Admin detection ───────────────────────────────────────────────────
+      // ── Admin/Employee detection ───────────────────────────────────────────────────
       const adminFound = roles.find(r => r.role === 'admin');
+      const employeeFound = roles.find(r => r.role === 'employee');
       if (adminFound) {
         // Admin email — auto-set role, skip role selector entirely
         setIsAdmin(true);
+        setIsEmployee(false);
         setRole('admin');
+      } else if (employeeFound) {
+        setIsAdmin(false);
+        setIsEmployee(true);
+        setRole('employee');
       } else if (roles.length === 1) {
         setIsAdmin(false);
+        setIsEmployee(false);
         setRole(roles[0].role); // auto-select if only one role
       } else {
         setIsAdmin(false);
+        setIsEmployee(false);
         setRole(''); // multiple or zero — user must pick
       }
       setStep(2);
     } catch {
       setIsAdmin(false);
+      setIsEmployee(false);
       setStep(2); // still proceed
     } finally {
       setChecking(false);
@@ -200,8 +210,8 @@ const LoginPage = () => {
   /* ── Step 2: submit login ──────────────────────────────────────────────── */
   const handleLogin = async (e) => {
     e.preventDefault();
-    // Admin bypasses role selector — role already set to 'admin'
-    if (!role && !isAdmin) { setError('Please select your account type to continue'); return; }
+    // Admin/Employee bypasses role selector
+    if (!role && !isAdmin && !isEmployee) { setError('Please select your account type to continue'); return; }
     if (!password) { setError('Please enter your password'); return; }
     setError('');
     setLoading(true);
@@ -339,7 +349,7 @@ const LoginPage = () => {
               <div className="w-7 h-7 rounded-xl bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center">
                 <HardHat className="w-4 h-4 text-white" />
               </div>
-              <span className="font-display font-bold text-gray-900">Labour<span className="text-orange-500">Connect</span></span>
+              <span className="font-display font-bold text-gray-900">Labour<span className="text-orange-500">Connect</span> <span className="text-[10px] opacity-60 font-medium ml-1 tracking-tight italic">["ShramSetu Bharat"]</span></span>
             </div>
           </div>
 
@@ -390,7 +400,7 @@ const LoginPage = () => {
 
                 <div className="mt-6 text-center">
                   <p className="text-sm text-gray-500">
-                    New to Labour Connect?{' '}
+                    New to LabourConnect ["ShramSetu Bharat"]?{' '}
                     <Link to="/register" className="text-orange-500 font-semibold hover:underline">Create account</Link>
                   </p>
                 </div>
@@ -440,16 +450,16 @@ const LoginPage = () => {
                     </div>
                   )}
 
-                  {/* ── Role selector — hidden for admin ── */}
-                  {isAdmin ? (
-                    /* Admin badge — shown instead of role cards */
+                  {/* ── Role selector — hidden for admin/employee ── */}
+                  {isAdmin || isEmployee ? (
+                    /* Admin/Employee badge — shown instead of role cards */
                     <div className="flex items-center gap-3 px-4 py-3.5 rounded-2xl bg-indigo-50 border border-indigo-200">
                       <div className="w-10 h-10 rounded-xl bg-indigo-600 flex items-center justify-center flex-shrink-0">
                         <ShieldCheck className="w-5 h-5 text-white" />
                       </div>
                       <div>
-                        <p className="font-semibold text-indigo-800 text-sm">Administrator Account</p>
-                        <p className="text-indigo-500 text-xs">Full platform access detected</p>
+                        <p className="font-semibold text-indigo-800 text-sm">{isAdmin ? 'Administrator' : 'Employee'} Account</p>
+                        <p className="text-indigo-500 text-xs">{isAdmin ? 'Full platform access detected' : 'Employee portal access detected'}</p>
                       </div>
                       <div className="ml-auto">
                         <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-indigo-100">

@@ -8,20 +8,42 @@ const getOrCreateConversation = asyncHandler(async (req, res) => {
   const { participantId, jobId, type = 'direct' } = req.body;
   const userId = req.user._id;
 
+  let actualParticipantId = participantId;
+
+  // If user is client or labour, redirect chat to their assigned employee
+  if (req.user.role === 'client' || req.user.role === 'labour') {
+    const LabourProfile = require('../models/labourProfileModel');
+    const ClientProfile = require('../models/clientProfileModel');
+    const User = require('../models/userModel');
+
+    let profile = null;
+    if (req.user.role === 'client') profile = await ClientProfile.findOne({ user: userId });
+    if (req.user.role === 'labour') profile = await LabourProfile.findOne({ user: userId });
+
+    if (profile && profile.assignedEmployee) {
+      actualParticipantId = profile.assignedEmployee;
+    } else {
+      const defaultEmployee = await User.findOne({ role: 'employee' });
+      if (defaultEmployee) {
+        actualParticipantId = defaultEmployee._id;
+      }
+    }
+  }
+
   let conversation = await Conversation.findOne({
-    participants: { $all: [userId, participantId] },
+    participants: { $all: [userId, actualParticipantId] },
     type,
     ...(jobId && { jobRef: jobId }),
   }).populate('participants', 'name avatar role').populate('jobRef', 'title');
 
   if (!conversation) {
     conversation = await Conversation.create({
-      participants:  [userId, participantId],
+      participants:  [userId, actualParticipantId],
       type,
       ...(jobId && { jobRef: jobId }),
       unreadCounts: [
         { user: userId,        count: 0 },
-        { user: participantId, count: 0 },
+        { user: actualParticipantId, count: 0 },
       ],
     });
     conversation = await Conversation.findById(conversation._id)

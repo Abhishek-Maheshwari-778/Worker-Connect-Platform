@@ -612,8 +612,16 @@ const JobCard = ({ job, showApplyBtn = false, onApply, myAppStatus, clientHistor
         <div className="flex items-start justify-between gap-2">
           <div className="flex items-center gap-2.5 min-w-0">
             <div className="relative flex-shrink-0">
-              {/* Fixed avatar size */}
-              <Avatar src={job.postedBy?.avatar?.url} name={job.postedBy?.name} size="sm" />
+              {/* Show Mediator Avatar if Labour, else Client */}
+              {isLabour && job.postedBy?.clientProfile?.assignedEmployee ? (
+                <Avatar 
+                  src={job.postedBy.clientProfile.assignedEmployee.avatar?.url} 
+                  name={job.postedBy.clientProfile.assignedEmployee.name} 
+                  size="sm" 
+                />
+              ) : (
+                <Avatar src={job.postedBy?.avatar?.url} name={job.postedBy?.name} size="sm" />
+              )}
               {badge?.tier === 'trusted' && (
                 <span className="absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 bg-emerald-500 rounded-full flex items-center justify-center border border-white z-10">
                   <CheckCircle className="w-2.5 h-2.5 text-white fill-white" />
@@ -622,7 +630,10 @@ const JobCard = ({ job, showApplyBtn = false, onApply, myAppStatus, clientHistor
             </div>
             <div className="min-w-0">
               <p className="text-xs text-slate-500 truncate flex items-center gap-1">
-                {job.postedBy?.name ?? 'Client'}
+                {isLabour && job.postedBy?.clientProfile?.assignedEmployee 
+                  ? `${job.postedBy.clientProfile.assignedEmployee.name} (Mediator)`
+                  : (job.postedBy?.name ?? 'Client')
+                }
                 {badge && (
                   <span className={`text-[9px] font-bold px-1 rounded-sm ${
                     badge.tier === 'trusted' ? 'bg-emerald-100 text-emerald-700' :

@@ -744,7 +744,14 @@ if (savedBy) {
 
   const [jobsRaw, total] = await Promise.all([
   Job.find(filter)
-    .populate('postedBy', 'name avatar location')
+    .populate({
+      path: 'postedBy',
+      select: 'name avatar location clientProfile',
+      populate: {
+        path: 'clientProfile',
+        populate: { path: 'assignedEmployee', select: 'name avatar' }
+      }
+    })
     .sort({ [sortBy]: order === 'desc' ? -1 : 1 })
     .skip(skip)
     .limit(limit)
@@ -766,8 +773,16 @@ const jobs = jobsRaw.map(job => ({
 // ─── GET JOB BY ID ────────────────────────────────────────────────────────────
 const getJobById = asyncHandler(async (req, res) => {
   const job = await Job.findById(req.params.id)
-    .populate('postedBy', 'name email phone avatar location clientProfile')
+    .populate({
+      path: 'postedBy',
+      select: 'name email phone avatar location clientProfile',
+      populate: {
+        path: 'clientProfile',
+        populate: { path: 'assignedEmployee', select: 'name email phone' }
+      }
+    })
     .populate('applicants.labour', 'name avatar');
+    
   if (!job) { res.status(404); throw new Error('Job not found'); }
   successResponse(res, 200, 'Job fetched', job);
 });

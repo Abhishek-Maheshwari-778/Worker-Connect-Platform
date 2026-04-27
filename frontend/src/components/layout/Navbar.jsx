@@ -56,7 +56,7 @@ const Navbar = ({ onMenuToggle, transparent = false }) => {
                 <HardHat className="w-4 h-4 text-white" />
               </div>
               <span className={`font-display font-bold text-lg ${isDark ? 'text-white' : 'text-slate-900'}`}>
-                Labour<span className="text-accent">Connect</span>
+                Labour<span className="text-accent">Connect</span> <span className="text-xs font-medium opacity-70 block sm:inline-block border-l border-slate-300 ml-2 pl-2">ShramSetu Bharat</span>
               </span>
             </Link>
           </div>

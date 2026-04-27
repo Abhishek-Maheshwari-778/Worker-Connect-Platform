@@ -152,6 +152,7 @@ const leaderboardRoutes    = require('./routes/leaderboardRoutes');
 const otpRoutes            = require('./routes/otpRoutes');
 const contactRoutes        = require('./routes/contactRoutes');
 const disputeRoutes        = require('./routes/disputeRoutes');
+const employeeRoutes       = require('./routes/employeeRoutes');
 const { startCronJobs, setIO } = require('./services/cronService');
 
 const app = express();
@@ -227,6 +228,7 @@ app.use(`${API}/otp`,             otpRoutes);
 app.use(`${API}/contact`,         contactRoutes);      // POST /api/contact (public form submit)
 app.use(`${API}/admin/contacts`,  contactRoutes);      // GET/PATCH/DELETE /api/admin/contacts (admin panel)
 app.use(`${API}/disputes`,        disputeRoutes);
+app.use(`${API}/employee`,        employeeRoutes);
 // ── 404 catcher & global error handler ────────────────────────────────────────
 app.use(notFound);
 app.use(errorHandler);

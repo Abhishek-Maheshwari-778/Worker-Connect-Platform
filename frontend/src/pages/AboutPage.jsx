@@ -76,7 +76,7 @@ export default function AboutPage() {
                 India has over 400 million daily wage workers who contribute enormously to the economy but lack the tools and platforms that white-collar workers take for granted.
               </p>
               <p className="text-gray-600 leading-relaxed mb-8">
-                Labour Connect gives these workers a professional digital identity — a verified profile, a ratings history, a portfolio, and access to jobs that match their skills and location. For clients, we make hiring trustworthy, fast, and completely transparent.
+                LabourConnect ["ShramSetu Bharat"] gives these workers a professional digital identity — a verified profile, a ratings history, a portfolio, and access to jobs that match their skills and location. For clients, we make hiring trustworthy, fast, and completely transparent.
               </p>
               <div className="space-y-3">
                 {['Built for Bharat — designed for India\'s unique labour market','Mobile-first for low-bandwidth environments','Available in multiple regional languages (coming soon)','Zero commission model for workers on basic tier'].map((item, i) => (
@@ -143,6 +143,78 @@ export default function AboutPage() {
                 <p className="text-gray-500 text-xs mt-1">{m.role}</p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Project Submission Section */}
+      <section className="py-24 bg-slate-50 border-t border-slate-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            
+            {/* Submitted By */}
+            <div className="reveal-left bg-white p-8 rounded-3xl border border-slate-200 shadow-sm">
+              <h2 className="font-display text-2xl font-bold text-slate-900 mb-6 flex items-center gap-3">
+                <span className="w-10 h-10 rounded-xl bg-orange-100 flex items-center justify-center text-orange-600">
+                  <Users className="w-5 h-5" />
+                </span>
+                Submitted By
+              </h2>
+              <div className="space-y-4">
+                {[
+                  { name: 'Abhishek Maheshwari', id: '2310201023' },
+                  { name: 'Mansi Rawat',        id: '2310201302' },
+                  { name: 'Abhishek Verma',     id: '2310201028' },
+                  { name: 'Akshat Rastogi',     id: '2310201050' },
+                ].map((s, i) => (
+                  <div key={s.id} className="flex items-center justify-between p-4 rounded-2xl bg-slate-50 border border-slate-100 hover:border-orange-200 transition-colors">
+                    <div className="flex items-center gap-3">
+                      <div className="w-8 h-8 rounded-lg bg-white flex items-center justify-center text-xs font-bold text-slate-400 border border-slate-100">
+                        {i+1}
+                      </div>
+                      <span className="font-semibold text-slate-800">{s.name}</span>
+                    </div>
+                    <span className="text-xs font-mono text-slate-500 bg-white px-2 py-1 rounded-md border border-slate-100">
+                      ID: {s.id}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Guidance */}
+            <div className="reveal-right bg-white p-8 rounded-3xl border border-slate-200 shadow-sm">
+              <h2 className="font-display text-2xl font-bold text-slate-900 mb-6 flex items-center gap-3">
+                <span className="w-10 h-10 rounded-xl bg-blue-100 flex items-center justify-center text-blue-600">
+                  <Target className="w-5 h-5" />
+                </span>
+                Under the Guidance of
+              </h2>
+              <div className="p-6 rounded-2xl bg-blue-50 border border-blue-100 relative overflow-hidden">
+                <div className="absolute top-0 right-0 p-4 opacity-10">
+                  <Target className="w-24 h-24 text-blue-600" />
+                </div>
+                <div className="relative z-10">
+                  <h3 className="text-xl font-bold text-slate-900">Mr. Akash Sanghi</h3>
+                  <p className="text-blue-700 font-medium mt-1">Head of Department, FOCA</p>
+                  <div className="mt-6 pt-6 border-t border-blue-200/50 space-y-1">
+                    <p className="text-sm text-slate-600">Faculty of Computer Applications</p>
+                    <p className="text-sm font-bold text-slate-800">Invertis University, Bareilly</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-8 flex items-center gap-4 p-4 rounded-2xl bg-slate-50 border border-slate-100">
+                <div className="w-12 h-12 rounded-xl bg-white flex items-center justify-center shadow-sm">
+                  <Globe className="w-6 h-6 text-slate-400" />
+                </div>
+                <div>
+                  <p className="text-xs text-slate-500 uppercase font-bold tracking-wider">Academic Year</p>
+                  <p className="text-sm font-bold text-slate-800">2023 - 2024</p>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
       </section>

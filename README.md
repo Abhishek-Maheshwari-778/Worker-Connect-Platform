@@ -98,8 +98,9 @@ Copy `backend/.env.example` to `backend/.env` and fill in:
 
 | Role | Capabilities |
 |---|---|
-| **Labour** | Browse/apply to jobs · Profile · Chat · Aadhaar verification · Govt schemes |
-| **Client** | Post jobs · Hire workers · Browse labourers · Chat · Rate workers |
+| **Labour** | Browse/apply to jobs · Profile · Chat (with mediator) · Aadhaar verification |
+| **Client** | Post jobs · Hire workers · Browse labourers · Chat (with mediator) · Rate workers |
+| **Employee (Mediator)** | Manage area operations · Act as chat mediator between clients and workers |
 | **Admin** | Dashboard analytics · Verify identities · Manage users · Monitor jobs |
 
 ---

@@ -24,6 +24,8 @@ const {
   sendReengagementEmail,
   deleteGhostAccounts,
   getVerificationSLA,
+  getAllEmployees,
+  createEmployee,
 } = require('../controllers/adminController');
 const { protect, authorize } = require('../middleware/authMiddleware');
 
@@ -34,6 +36,9 @@ router.get('/dashboard',                  getDashboardStats);
 router.get('/users',                      getAllUsers);
 router.put('/users/:userId/suspend',      toggleUserSuspension);
 router.delete('/users/:userId',           deleteUser);
+router.put('/users/:userId/assign-employee', assignEmployeeToUser);
+router.get('/employees',                  getAllEmployees);
+router.post('/employees',                 createEmployee);
 router.get('/verifications',              getPendingVerifications);
 router.put('/verifications/:profileId',   reviewVerification);
 router.get('/jobs',                       getAllJobsAdmin);

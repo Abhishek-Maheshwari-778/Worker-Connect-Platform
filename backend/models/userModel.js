@@ -74,7 +74,7 @@ const userSchema = new mongoose.Schema(
     // ── Role & Status ─────────────────────────────────────────────────────────
     role: {
       type:    String,
-      enum:    ['labour', 'client', 'admin'],
+      enum:    ['labour', 'client', 'admin', 'employee'],
       default: 'labour',
     },
     isActive:          { type: Boolean, default: true },

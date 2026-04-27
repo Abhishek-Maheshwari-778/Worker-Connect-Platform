@@ -1,5 +1,5 @@
-import { Routes, Route, Navigate, useNavigate } from 'react-router-dom';
-import { useEffect } from 'react';
+import { Routes, Route, Navigate, useNavigate, Outlet } from 'react-router-dom';
+import { useEffect, lazy, Suspense } from 'react';
 import { useAuth } from '@/context/AuthContext';
 import SuspendedPage from '@/pages/SuspendedPage';
 import { LevelUpModal, BadgeUnlockedModal, useGamificationModals } from '@/components/common/LevelUpModal';
@@ -67,10 +67,19 @@ import AdminJobsPage from '@/pages/admin/AdminJobsPage';
 import AdminSchemesPage from '@/pages/admin/AdminSchemesPage';
 import AdminSchemeFormPage from '@/pages/admin/AdminSchemeFormPage';
 import AdminContactsPage from '@/pages/admin/AdminContactsPage';
+import AdminEmployeesPage from '@/pages/admin/AdminEmployeesPage';
 
 // ── Disputes ──
 import RaiseDisputePage from '@/pages/disputes/RaiseDisputePage';
 import MyDisputesPage from '@/pages/disputes/MyDisputesPage';
+
+// ── Employee ──
+import EmployeeLayout from '@/components/layout/EmployeeLayout';
+const EmployeeDashboard = lazy(() => import('@/pages/employee/EmployeeDashboard'));
+const EmployeeChatPage  = lazy(() => import('@/pages/employee/EmployeeChatPage'));
+const EmployeeWorkersPage = lazy(() => import('@/pages/employee/EmployeeWorkersPage'));
+const EmployeeClientsPage = lazy(() => import('@/pages/employee/EmployeeClientsPage'));
+const EmployeeJobsPage    = lazy(() => import('@/pages/employee/EmployeeJobsPage'));
 
 // ── Redirects ──
 const RoleRedirect = () => {
@@ -79,6 +88,7 @@ const RoleRedirect = () => {
   if (user?.role === 'labour') return <Navigate to="/labour" replace />;
   if (user?.role === 'client') return <Navigate to="/client" replace />;
   if (user?.role === 'admin') return <Navigate to="/admin" replace />;
+  if (user?.role === 'employee') return <Navigate to="/employee" replace />;
   return <Navigate to="/" replace />;
 };
 
@@ -93,6 +103,10 @@ const SharedRedirect = ({ page }) => {
       navigate(`/labour/${page}`, { replace: true });
     } else if (user?.role === 'client') {
       navigate(`/client/${page}`, { replace: true });
+    } else if (user?.role === 'admin') {
+      navigate('/admin', { replace: true });
+    } else if (user?.role === 'employee') {
+      navigate('/employee', { replace: true });
     } else {
       navigate('/login', { replace: true });
     }
@@ -228,6 +242,7 @@ const App = () => {
 >
           <Route index element={<AdminDashboard />} />
           <Route path="users" element={<AdminUsersPage />} />
+          <Route path="employees" element={<AdminEmployeesPage />} />
           <Route path="verifications" element={<AdminVerificationsPage />} />
           <Route path="jobs" element={<AdminJobsPage />} />
           <Route path="badges" element={<AdminBadgePage />} />
@@ -242,6 +257,30 @@ const App = () => {
           <Route path="schemes/new" element={<AdminSchemeFormPage />} />
           <Route path="schemes/:id/edit" element={<AdminSchemeFormPage />} />
           <Route path="contacts" element={<AdminContactsPage />} />
+        </Route>
+
+        {/* ───────── EMPLOYEE ───────── */}
+        <Route
+          path="/employee"
+          element={
+            <ProtectedRoute role="employee">
+              <EmployeeLayout />
+            </ProtectedRoute>
+          }
+        >
+          <Route element={
+            <Suspense fallback={<div className="p-10 text-center">Loading portal...</div>}>
+              <Outlet />
+            </Suspense>
+          }>
+            <Route index element={<EmployeeDashboard />} />
+            <Route path="chat" element={<EmployeeChatPage />} />
+            <Route path="chat/:convId" element={<EmployeeChatPage />} />
+            <Route path="workers" element={<EmployeeWorkersPage />} />
+            <Route path="clients" element={<EmployeeClientsPage />} />
+            <Route path="jobs" element={<EmployeeJobsPage />} />
+            <Route path="settings" element={<SettingsPage />} />
+          </Route>
         </Route>
 
         {/* 404 */}
